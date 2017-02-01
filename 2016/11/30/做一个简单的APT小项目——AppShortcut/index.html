@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <!-- Title -->
+    
+    <title>
+        做一个简单的APT小项目——AppShortcut | Snowbean&#39;s Blog
+    </title>
+    
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon" sizes="192x192" href="/img/favicon.png">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+    
+    <!-- Meta & INfo -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0097A7">
+    <meta name="author" content="Snowbean">
+    <meta name="description" content="Keep Calm and Carry on!">
+    <meta name="keywords" content="null">
+    
+    <!--iOS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-title" content="Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="480">
+    
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Snowbean&#39;s Blog">
+    
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://wuapnjie.github.io">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="做一个简单的APT小项目——AppShortcut | Snowbean&#39;s Blog">
+    <meta property="og:description" content="Keep Calm and Carry on!">
+    
+     <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+        
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+    
+    <!-- Import CSS -->
+    <link rel="stylesheet" href="/css/material.min.css">
+    <link rel="stylesheet" href="/css/style.min.css">
+    <!-- Config CSS -->
+
+
+<!-- Other Styles -->
+<style>
+	body, html{
+		font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+	}
+	
+    a{
+        color: #00838F
+    }
+    
+    .mdl-card__media,
+    #search-label,
+    #search-form-label:after,
+    #scheme-Paradox .hot_tags-count,
+    #scheme-Paradox .sidebar_archives-count,
+    #scheme-Paradox .sidebar-colored .sidebar-header,
+    #scheme-Paradox .sidebar-colored .sidebar-badge{
+        background-color: #0097A7 !important
+    }
+    
+	/* Sidebar User Drop Down Menu Text Color */
+	#scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+    #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus{
+        color: #0097A7 !important
+    }
+    
+    #post_entry-right-info,
+    .sidebar-colored .sidebar-nav li:hover > a,
+    .sidebar-colored .sidebar-nav li:hover > a i,
+    .sidebar-colored .sidebar-nav li > a:hover,
+    .sidebar-colored .sidebar-nav li > a:hover i,
+    .sidebar-colored .sidebar-nav li > a:focus i,
+    .sidebar-colored .sidebar-nav > .open > a,
+    .sidebar-colored .sidebar-nav > .open > a:hover,
+    .sidebar-colored .sidebar-nav > .open > a:focus,
+    #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a{
+        color: #0097A7 !important
+    }
+    
+    .toTop{
+        background: #757575 !important
+    }
+		
+	.material-layout .material-post>.material-nav,
+	.material-layout .material-index>.material-nav,
+	.material-nav a{
+		color: #757575;
+	}
+		
+	#scheme-Paradox .MD-burger-layer {
+		background-color: #757575;
+	}
+
+	#scheme-Paradox #post-toc-trigger-btn{
+		color: #757575;
+	}
+	
+	.post-toc a:hover{
+		color: #00838F;
+		text-decoration: underline;
+	}
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+        body{
+            background-color: #F5F5F5
+        }
+		
+		/* blog_info bottom background */
+        #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text{
+            background-color: #fff;
+        }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+        .fade {
+            transition: all 800ms linear;
+            -webkit-transform: translate3d(0,0,0);
+            -moz-transform: translate3d(0,0,0);
+            -ms-transform: translate3d(0,0,0);
+            -o-transform: translate3d(0,0,0);
+            transform: translate3d(0,0,0);
+            opacity: 1;
+        }
+
+        .fade.out{
+            opacity: 0;
+        }
+    </style>
+
+	<script src="/js/jquery.min.js"></script>
+	
+	<link rel="stylesheet" href="/css/highlight/solarized-white.css">
+	
+	<!-- UC Browser Compatible-->
+	<script>
+		var agent = navigator.userAgent.toLowerCase();
+		if(agent.indexOf('ucbrowser')>0) {
+			document.write('<link rel="stylesheet" href="/css/uc.css">');
+		   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+		}
+	</script>
+    
+    <!-- Custom Head -->
+    
+</head>
+	
+	
+
+    <body id="scheme-Paradox">
+
+		
+        <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+				
+			
+			
+            <!-- Main Container -->
+            <main class="material-layout__content" id="main">
+				
+                <!-- Top Anchor -->
+                <div id="top"></div>
+				
+				
+                <!-- Hamburger Button -->
+                <button class="MD-burger-icon sidebar-toggle">
+                    <span class="MD-burger-layer"></span>
+                </button>
+				
+				
+                <!-- Post TOC -->
+
+    
+	<!-- Back Button -->
+<!--
+	<div class="material-back" id="backhome-div" tabindex="0">
+		<a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" href="#" onclick="window.history.back();return false;" target="_self" role="button" data-upgraded=",MaterialButton,MaterialRipple">
+			<i class="material-icons" role="presentation">arrow_back</i>
+			<span class="mdl-button__ripple-container">
+				<span class="mdl-ripple"></span>
+			</span>
+		</a>
+	</div>			
+-->
+	<!-- Left aligned menu below button -->
+	<button id="post-toc-trigger-btn"
+			class="mdl-button mdl-js-button mdl-button--icon">
+	  <i class="material-icons">format_list_numbered</i>
+	</button>
+
+	<ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect"
+		for="post-toc-trigger-btn">
+			
+			<ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#APT简单介绍"><span class="post-toc-number">1.</span> <span class="post-toc-text">APT简单介绍</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#项目结构"><span class="post-toc-number">2.</span> <span class="post-toc-text">项目结构</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#注解模块的编写"><span class="post-toc-number">3.</span> <span class="post-toc-text">注解模块的编写</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#注解处理器的编写"><span class="post-toc-number">4.</span> <span class="post-toc-text">注解处理器的编写</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#提供调用接口"><span class="post-toc-number">5.</span> <span class="post-toc-text">提供调用接口</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#总结"><span class="post-toc-number">6.</span> <span class="post-toc-text">总结</span></a></li></ol>
+		
+<!--			<li class="mdl-menu__item">Some Action</li>-->
+	</ul>
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+		
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+	<!-- Paradox Post Header -->
+	
+		
+			<!-- Random Thumbnail -->
+			<div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+				<script>
+    
+    var randomNum;
+    randomNum = Math.floor(Math.random() * 5 + 1);
+    
+    $(".post_thumbnail-random").css('background-image', 'url(' + '/img/random/' + randomNum + '.png' + ')');
+    
+</script>
+
+		
+	
+        <p class="article-headline-p">
+            做一个简单的APT小项目——AppShortcut
+        </p>
+    </div>
+
+	
+
+				
+				
+					<!-- Paradox Post Info -->
+					<div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+    
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>Snowbean</strong>
+        <span>11月 30, 2016</span>
+    </div>
+    
+    <div class="section-spacer"></div>
+	
+    <!-- Favorite -->
+<!--
+    <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+        <i class="material-icons" role="presentation">favorite</i>
+        <span class="visuallyhidden">favorites</span>
+    </button>
+-->
+    
+    <!-- Tags (bookmark) -->
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/Android/">Android</a>
+    </ul>
+    
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+    
+    
+    
+    
+    <!-- Share Twitter -->
+    <a class="post_share-link" href="https://twitter.com/intent/tweet?text=做一个简单的APT小项目——AppShortcut&url=http://wuapnjie.github.io//2016/11/30/做一个简单的APT小项目——AppShortcut/index.html&via=Snowbean" target="_blank">
+        <li class="mdl-menu__item">
+            分享到 Twitter
+        </li>
+    </a>
+    
+    <!-- Share Google+ -->
+    <a class="post_share-link" href="https://plus.google.com/share?url=http://wuapnjie.github.io//2016/11/30/做一个简单的APT小项目——AppShortcut/index.html" target="_blank">
+        <li class="mdl-menu__item">
+            分享到 Google+
+        </li>
+    </a>
+    
+    <!-- Share Weibo -->
+    <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=做一个简单的APT小项目——AppShortcut&url=http://wuapnjie.github.io//2016/11/30/做一个简单的APT小项目——AppShortcut/index.html&pic=&searchPic=false&style=simple" target="_blank">
+        <li class="mdl-menu__item">
+            分享到微博
+        </li>
+    </a>
+</ul>
+</div>
+				
+
+                <!-- Post Content -->
+                <div id="post-content" class="markdown-Github mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+	
+		<p>最近学习了编译时注解框架的制作，写了一个小项目。阅读本文前希望大家有关于注解的相关知识。</p>
+<p>本文介绍一个简单的编译时注解小项目的制作过程。我选择了Android API 25的新功能App Shortcut，使用注解来快速制作一个Shortcut。为什么选择Shortcut呢，因为我觉得很多应用只需要使用到静态加载的Shortcut就好了，而对于静态加载的Shortcut要写一个比较长的Xml配置文件，我觉得特别麻烦。</p>
+<p>先来看一下我们实现的效果。</p>
+<p>Java代码</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="meta">@ShortcutApplication</span></div><div class="line"><span class="meta">@AppShortcut</span>(resId = R.mipmap.ic_launcher,</div><div class="line">        description = <span class="string">"First Shortcut"</span>)</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">        setContentView(R.layout.activity_main);</div><div class="line">      	<span class="comment">//API 调用</span></div><div class="line">        ShortcutCreator.create(<span class="keyword">this</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>效果图：</p>
+<p><img src="http://7xrqmj.com1.z0.glb.clouddn.com/shortcut.gif" alt=""></p>
+<h3 id="APT简单介绍"><a href="#APT简单介绍" class="headerlink" title="APT简单介绍"></a>APT简单介绍</h3><p>APT，全称Annotation Processing Tool，它用来在编译时处理源代码中的注解信息，我们可以根据注解来生成一些Java文件，防止编写冗余的代码，比如ButterKnife项目，正是利用了APT工具，帮助我们少写了许多重复冗余的代码。本文中，通过注解来少写一些配置文件。</p>
+<h3 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h3><p>本项目共分为4个Module，两个Java Library module，一个Android Library module和用于演示的Android Application module</p>
+<ul>
+<li><strong>easyshortcuts-api</strong>:Android Library module，用于供客户端的调用。</li>
+<li><strong>easyshortcuts-annotation</strong>:Java Library module，用于提供注解类。</li>
+<li><strong>easyshortcuts-compiler</strong>:Java Library module，用于编写处理注解并生成相关<code>Processor</code>的注解处理模块</li>
+<li>还有一个普通的应用模块</li>
+</ul>
+<p>其中<strong>easyshortcuts-api</strong>和<strong>easyshortcuts-compiler</strong>模块依赖<strong>easyshortcuts-annotation</strong>模块。</p>
+<h3 id="注解模块的编写"><a href="#注解模块的编写" class="headerlink" title="注解模块的编写"></a>注解模块的编写</h3><p>搭好项目后，第一个动手编写的应该是<strong>easyshortcuts-annotation</strong>模块，通过查看Android Developer官网上的Shortcut介绍后，发现通过Java代码，我们只可以通过<code>ShortcutManager</code>生成动态Shortcut，生成一个动态Shortcut的代码简单重复，每个Shortcut需要一个String类型的Id，图标的ResId，显示的文字，以及一个Intent的Action字段。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="meta">@Retention</span>(RetentionPolicy.SOURCE)</div><div class="line"><span class="meta">@Target</span>(ElementType.TYPE)</div><div class="line"><span class="keyword">public</span> <span class="meta">@interface</span> AppShortcut &#123;</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">resId</span><span class="params">()</span></span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">rank</span><span class="params">()</span> <span class="keyword">default</span> 1</span>;</div><div class="line"></div><div class="line">    <span class="function">String <span class="title">description</span><span class="params">()</span></span>;</div><div class="line"></div><div class="line">    <span class="function">String <span class="title">action</span><span class="params">()</span> <span class="keyword">default</span> Define.SHORTCUT_ACTION</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>之后我用注解所在类的类名称作为Shortcut的Id。</p>
+<p>这里，我还建了一个注解<code>ShortcutApplication</code>，是一个没有任何字段的注解，这个注解应该用在用户第一个打开的Activity。因为这里使用了动态加载的方式创建Shortcut，所以必须要执行代码才可以生成Shortcut，所以应该在Launcher Activity使用。</p>
+<h3 id="注解处理器的编写"><a href="#注解处理器的编写" class="headerlink" title="注解处理器的编写"></a>注解处理器的编写</h3><p>确定了注解后，我们要编写相应的注解处理器来处理注解并生成相应的Java文件，这里<strong>easyshortcuts-compiler</strong>依赖了google的<a href="https://github.com/google/auto/tree/master/service" target="_blank" rel="external">auto-service</a>库和square的<a href="https://github.com/square/javapoet" target="_blank" rel="external">javapoet</a>库。</p>
+<figure class="highlight groovy"><table><tr><td class="code"><pre><div class="line">compile <span class="string">"com.squareup:javapoet:$rootProject.ext.squareJavaPoetVersion"</span></div><div class="line">compile <span class="string">"com.google.auto.service:auto-service:$rootProject.ext.googleAutoServiceVersion"</span></div></pre></td></tr></table></figure>
+<p>其中auto-service库可以很方便的帮助我们生成配置文件，javapoet库可以很方便的帮助我们自动生成Java代码，以下代码通过查看Javapoet的README就可以很快理解。</p>
+<p>新建一个继承自<code>AbstractProcessor</code>的<code>ShortcutProcessor</code>，下面是一个基本的<code>Processor</code>应有的要素，我们的重点在与<code>process()</code>方法。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="comment">//帮助我们生成配置文件的注解</span></div><div class="line"><span class="meta">@AutoService</span>(Processor.class)</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ShortcutsProcessor</span> <span class="keyword">extends</span> <span class="title">AbstractProcessor</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> Filer mFiler;</div><div class="line">    <span class="keyword">private</span> Elements mElementUtils;</div><div class="line">    <span class="keyword">private</span> Messager mMessager;</div><div class="line">	……</div><div class="line">      </div><div class="line">    <span class="comment">//在初始化时获得相关帮助对象</span></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">(ProcessingEnvironment processingEnvironment)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.init(processingEnvironment);</div><div class="line">        mFiler = processingEnvironment.getFiler();</div><div class="line">        mElementUtils = processingEnvironment.getElementUtils();</div><div class="line">        mMessager = processingEnvironment.getMessager();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">  	<span class="comment">//根据相应的注解进行处理</span></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">process</span><span class="params">(Set&lt;? extends TypeElement&gt; set, RoundEnvironment roundEnvironment)</span> </span>&#123;</div><div class="line">       	……</div><div class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">  	<span class="comment">//返回要支持的注解</span></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> Set&lt;String&gt; <span class="title">getSupportedAnnotationTypes</span><span class="params">()</span> </span>&#123;</div><div class="line">        Set&lt;String&gt; types = <span class="keyword">new</span> LinkedHashSet&lt;&gt;();</div><div class="line">        types.add(ShortcutApplication.class.getCanonicalName());</div><div class="line">        types.add(AppShortcut.class.getCanonicalName());</div><div class="line">        <span class="keyword">return</span> types;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">  	<span class="comment">//返回Java语言的支持版本</span></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> SourceVersion <span class="title">getSupportedSourceVersion</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> SourceVersion.latestSupported();</div><div class="line">    &#125;</div><div class="line">	</div><div class="line">    <span class="comment">//辅助的日志打印方法</span></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">printNote</span><span class="params">(String message)</span> </span>&#123;</div><div class="line">        mMessager.printMessage(Diagnostic.Kind.NOTE, message);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">printError</span><span class="params">(String error)</span> </span>&#123;</div><div class="line">        mMessager.printMessage(Diagnostic.Kind.NOTE, error);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在<code>process()</code>方法中，要获取所有有相关注解的<code>Element</code>，并获取每个注解中附带的字段，最后根据这些信息生成一个Java文件。为了更好的获取储存这些字段，我建立了一个model类<code>Shortcut</code>。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Shortcut</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> mResId;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> mRank;</div><div class="line">    <span class="keyword">private</span> String mDescription;</div><div class="line">    <span class="keyword">private</span> String mAction;</div><div class="line">    <span class="keyword">private</span> TypeElement mTypeElement;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Shortcut</span><span class="params">(Element element)</span> </span>&#123;</div><div class="line">        mTypeElement = (TypeElement) element;</div><div class="line">        AppShortcut appShortcut = mTypeElement.getAnnotation(AppShortcut.class);</div><div class="line">        mResId = appShortcut.resId();</div><div class="line">        mRank = appShortcut.rank();</div><div class="line">        mDescription = appShortcut.description();</div><div class="line">        mAction = appShortcut.action();</div><div class="line">    &#125;</div><div class="line">  </div><div class="line">  	<span class="comment">//相关的getXXX()方法</span></div><div class="line">  	……</div><div class="line">      </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>之后在<code>process()</code>方法中遍历所有带有相关注解的<code>Element</code>，并生成model对象</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">for</span> (Element element : roundEnvironment.getElementsAnnotatedWith(AppShortcut.class)) &#123;</div><div class="line">     <span class="comment">//检查注解所标注的元素是否为我们需要</span></div><div class="line">     <span class="keyword">if</span> (!isValid(element)) &#123;</div><div class="line">         <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">     &#125;</div><div class="line">	 <span class="comment">//解析这个element并生成相应的Shortcut对象</span></div><div class="line">     parseShortcut(element);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>最后根据所有<code>Shortcut</code>对象生成Java文件</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line">mShortcutClass.generateCode().writeTo(mFiler);</div></pre></td></tr></table></figure>
+<p>生成代码我使用Javapoet，可以很方便的生成代码。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> JavaFile <span class="title">generateCode</span><span class="params">()</span> </span>&#123;</div><div class="line">        MethodSpec.Builder methodBuilder = MethodSpec.methodBuilder(<span class="string">"create"</span>)</div><div class="line">                .addModifiers(Modifier.PUBLIC)</div><div class="line">                .addAnnotation(Override.class)</div><div class="line">                .addParameter(CONTEXT, <span class="string">"context"</span>)</div><div class="line">                .addStatement(<span class="string">"$T shortcutManager = context.getSystemService($T.class)"</span>, SHORTCUT_MANAGER, SHORTCUT_MANAGER)</div><div class="line">                .addStatement(<span class="string">"$T.Builder builder"</span>,SHORTCUT_INFO)</div><div class="line">                .addStatement(<span class="string">"$T intent"</span>,INTENT);</div><div class="line"></div><div class="line">        <span class="keyword">for</span> (Shortcut shortcut : mShortcuts) &#123;</div><div class="line">            methodBuilder.</div><div class="line">                    addStatement(<span class="string">"builder = new $T.Builder(context,$S)"</span>, SHORTCUT_INFO, shortcut.getTypeElement().getSimpleName().toString())</div><div class="line">                    .addStatement(<span class="string">"intent = new $T(context, $T.class)"</span>, INTENT, TypeName.get(shortcut.getTypeElement().asType()))</div><div class="line">                    .addStatement(<span class="string">"intent.setAction($S)"</span>, shortcut.getAction())</div><div class="line">                    .addStatement(<span class="string">"builder.setIntent(intent)"</span>)</div><div class="line">                    .addStatement(<span class="string">"builder.setShortLabel($S)"</span>, shortcut.getDescription())</div><div class="line">                    .addStatement(<span class="string">"builder.setLongLabel($S)"</span>, shortcut.getDescription())</div><div class="line">                    .addStatement(<span class="string">"builder.setRank($L)"</span>, shortcut.getRank())</div><div class="line">                    .addStatement(<span class="string">"builder.setIcon($T.createWithResource(context, $L))"</span>, ICON, shortcut.getResId())</div><div class="line">                    .addStatement(<span class="string">"shortcutManager.addDynamicShortcuts(singletonList(builder.build()))"</span>);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        TypeSpec shortcutClass = TypeSpec.classBuilder(mTypeElement.getSimpleName() + SUFFIX)</div><div class="line">                .addModifiers(Modifier.PUBLIC)</div><div class="line">                .addSuperinterface(CREATOR)</div><div class="line">                .addMethod(methodBuilder.build())</div><div class="line">                .build();</div><div class="line"></div><div class="line">        String packageName = mElementUtils.getPackageOf(mTypeElement).getQualifiedName().toString();</div><div class="line"></div><div class="line">        <span class="keyword">return</span> JavaFile</div><div class="line">                .builder(packageName, shortcutClass)</div><div class="line">                .addStaticImport(Collections.class, <span class="string">"singletonList"</span>)</div><div class="line">                .build();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="提供调用接口"><a href="#提供调用接口" class="headerlink" title="提供调用接口"></a>提供调用接口</h3><p>写完了注解的解释器后，我们每次编译都生成了一个Java类文件，但是我们并没有调用它，我们要提供一个接口来调用，本项目中提供了这样一个静态方法</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line">ShortcutCreator.create(<span class="keyword">this</span>);</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ShortcutCreator</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">create</span><span class="params">(Context context)</span> </span>&#123;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            Class&lt;?&gt; targetClass = context.getClass();</div><div class="line">            Class&lt;?&gt; creatorClass = Class.forName(targetClass.getName() + <span class="string">"$$Shortcut"</span>);</div><div class="line">            Creator creator = (Creator) creatorClass.newInstance();</div><div class="line">            creator.create(context);</div><div class="line">        &#125; <span class="keyword">catch</span> (ClassNotFoundException | InstantiationException | IllegalAccessException e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>由于我们利用APT自动生成的Java类的类名称是知道的且提供了默认的无参数构造器，所以我们很容易生成一个对象，并调用其相关方法来生成相应的Shortcut。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>编译时注解可以大大加快我们的开发效率，希望大家可以多制作一些编译时注解的库来造福广大开发者，让大家少些许多简单重复的代码。最后附上源码地址：<a href="https://github.com/wuapnjie/EasyShortcuts" target="_blank" rel="external">https://github.com/wuapnjie/EasyShortcuts</a></p>
+
+	
+	
+	
+	
+</div>
+				
+				
+
+                <!-- Post Comments -->
+                
+                    
+    <!-- 使用多说评论 -->
+    <link rel="stylesheet" href="/css/duoshuo.min.css">
+<style>
+    #ds-thread #ds-reset .ds-post-button{
+        background-color: #0097A7 !important;
+    }
+    #ds-wrapper #ds-reset .ds-icons-32{
+        background-color: #0097A7 !important;
+    }
+    #ds-reset .ds-highlight {
+        color: #0097A7 !important;
+    }
+</style>
+<div id="comments">
+    <!-- 多说评论框 start -->
+        <div class="ds-thread" 
+            data-thread-key="2016/11/30/做一个简单的APT小项目——AppShortcut/" 
+            data-url="http://wuapnjie.github.io/2016/11/30/做一个简单的APT小项目——AppShortcut/"
+            data-title="做一个简单的APT小项目——AppShortcut"></div>
+    <!-- 多说评论框 end -->
+</div>
+
+
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    
+    <!-- Prev Nav -->
+    
+        <a href="/2016/12/22/简单说说我最常用的图片加载库Picasso/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2016/11/18/Agera知识点整理/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+        </div>
+    </div>
+
+				
+				
+					<!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay "></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored  sidebar-fixed-left" role="navigation">
+	<div id="sidebar-main">
+	    <!-- Sidebar Header -->
+		<div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+    <i class="material-icons">clear_all</i>
+    <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.png" alt="Snowbean's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        wupanjie0611@email.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+		<!-- Sidebar Navigation  -->
+		<ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+			
+                <li>
+                    <a href="#" target="_blank" title="Email Me">
+						<i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    <li id="sidebar-first-li">
+        <a href="/" target="_self">
+            <i class="material-icons sidebar-material-icons">home</i>
+             主页
+        </a>
+    </li>
+
+    <!-- I'm Feeling Lucky -->
+<!--
+    <li class="dropdown">
+        <a href="" target="_self">
+            <i class="material-icons sidebar-material-icons">explore</i>
+             sidebar.imlucky
+        </a>
+    </li>
+-->
+
+	
+    <!-- Archives  -->
+    <li class="dropdown">
+        <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+            <i class="material-icons sidebar-material-icons">inbox</i>
+             归档
+            <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+            <li>
+            <a class="sidebar_archives-link" href="/archives/2017/01/">一月 2017<span class="sidebar_archives-count">8</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/12/">十二月 2016<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/11/">十一月 2016<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/09/">九月 2016<span class="sidebar_archives-count">6</span></a>
+        </ul>
+    </li>
+
+    <!-- Divider -->
+    <li class="divider"></li>
+
+
+    <!-- Pages  -->
+	
+
+    <!-- Article Numebr  -->
+    <li>
+        <a href="/archives">
+             文章总数
+             <span class="sidebar-badge">21</span>
+        </a>
+    </li>
+</ul>
+
+		<!-- Sidebar Divider -->
+		<div class="sidebar-divider"></div>
+
+		<!-- Sidebar Footer -->
+		<!-- 
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持。 :) 
+-->
+
+<!-- Theme Material -->
+<a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
+	<div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+		主题 - Material
+		<span class="sidebar-badge badge-circle">i</span>
+	</div>
+</a>
+
+<!-- Help & Support -->
+<!--
+<a href="mailto:hiviosey@gmail.com" class="sidebar-footer-text-a">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+		sidebar.help
+		<span class="mdl-button__ripple-container">
+			<span class="mdl-ripple"></span>
+		</span>
+	</div>
+</a>
+-->
+
+<!-- Feedback -->
+<!--
+<a href="https://github.com/viosey/hexo-theme-material/issues" target="_blank" class="sidebar-footer-text-a">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+         sidebar.feedback
+                    <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></div>
+</a>
+-->
+
+<!-- Abount Theme -->
+<!--
+<a href="https://blog.viosey.com/index.php/Material.html" target="_blank" class="sidebar-footer-text-a">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+         sidebar.about_theme
+        <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></div>
+</a>-->
+
+	</div>
+    
+    <!-- Sidebar Sponsor -->
+    
+
+
+</aside>
+
+				
+				
+				
+					<!-- Footer Top Button -->
+					<div class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+				
+				
+				<!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+	
+	
+		<!-- Paradox Footer Left Section -->
+		<div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+    <a href="https://twitter.com/twitter" target="view_window"><button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-twitter.png);">
+        <span class="visuallyhidden">Twitter</span>
+    </button></a>
+    
+    
+    <!-- Facebook -->
+    
+    <a href="https://www.facebook.com/facebook" target="view_window"><button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-facebook.png);">
+        <span class="visuallyhidden">Facebook</span>
+    </button></a>
+    
+    
+    <!-- Google + -->
+    
+    <a href="https://www.google.com/" target="view_window"><button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-gplus.png);">
+        <span class="visuallyhidden">Google Plus</span>
+    </button></a>
+    
+    
+    <!-- Weibo -->
+    
+    
+    
+    <!-- Instagram -->
+    
+    
+    
+    <!-- Tumblr -->
+    
+    
+    
+    <!-- Github -->
+    
+    <a href="https://github.com/wuapnjie" target="view_window"><button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-github.png);">
+        <span class="visuallyhidden">Github</span>
+    </button></a>
+    
+</div>
+
+
+		<!--Copyright-->
+		<div id="copyright">Copyright&nbsp;©&nbsp;<script type="text/javascript">var fd = new Date();document.write(fd.getFullYear());</script>&nbsp;Snowbean's Blog</div>
+
+		<!-- Paradox Footer Right Section -->
+
+		<!-- 
+		I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+		It will not impact the appearance and can give developers a lot of support :)
+
+		很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+		它不会影响美观并可以给开发者很大的支持。 :) 
+		-->
+
+		<div class="mdl-mini-footer--right-section">
+			<div>
+				<div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+				<div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+			</div>
+		</div>
+	
+    
+</footer>
+                
+				<!-- Import File -->
+<script src="/js/highlight.min.js"></script>
+<script src="/js/js.min.js"></script>
+<script src="/js/nprogress.js"></script>
+
+<script type="text/javascript">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    
+    $('#nprogress .bar').css({
+        'background': '#FF4081'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #FF4081, 0 0 15px #FF4081'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#FF4081',
+        'border-left-color': '#FF4081'
+    });
+    
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+    <!-- 多说公共 js 代码 start -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"wuapnjie"};
+        (function() {
+            var ds = document.createElement('script');
+            ds.type = 'text/javascript';ds.async = true;
+            ds.src = 'https://static.duoshuo.com/embed.js';
+            ds.charset = 'UTF-8';
+            (document.getElementsByTagName('head')[0] 
+             || document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+    </script>
+    <!-- 多说公共 js 代码 end -->
+
+
+
+
+<!-- Swiftye -->
+
+
+<!-- Local Search-->
+
+
+<!-- Window Load-->
+<script>
+    $(window).load(function() {
+        // Post_Toc parent position fixed
+        $(".post-toc-wrap").parent(".mdl-menu__container").css("position", "fixed");
+    });
+</script>
+
+<!-- MathJax Load-->
+
+            </main>
+        </div>
+		
+    </body>
+		
+	
+</html>

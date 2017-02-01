@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <!-- Title -->
+    
+    <title>
+        Android自定义View实战之贴纸StickerView | Snowbean&#39;s Blog
+    </title>
+    
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon" sizes="192x192" href="/img/favicon.png">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+    
+    <!-- Meta & INfo -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0097A7">
+    <meta name="author" content="Snowbean">
+    <meta name="description" content="Keep Calm and Carry on!">
+    <meta name="keywords" content="null">
+    
+    <!--iOS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-title" content="Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="480">
+    
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Snowbean&#39;s Blog">
+    
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://wuapnjie.github.io">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="Android自定义View实战之贴纸StickerView | Snowbean&#39;s Blog">
+    <meta property="og:description" content="Keep Calm and Carry on!">
+    
+     <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+        
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+    
+    <!-- Import CSS -->
+    <link rel="stylesheet" href="/css/material.min.css">
+    <link rel="stylesheet" href="/css/style.min.css">
+    <!-- Config CSS -->
+
+
+<!-- Other Styles -->
+<style>
+	body, html{
+		font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+	}
+	
+    a{
+        color: #00838F
+    }
+    
+    .mdl-card__media,
+    #search-label,
+    #search-form-label:after,
+    #scheme-Paradox .hot_tags-count,
+    #scheme-Paradox .sidebar_archives-count,
+    #scheme-Paradox .sidebar-colored .sidebar-header,
+    #scheme-Paradox .sidebar-colored .sidebar-badge{
+        background-color: #0097A7 !important
+    }
+    
+	/* Sidebar User Drop Down Menu Text Color */
+	#scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+    #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus{
+        color: #0097A7 !important
+    }
+    
+    #post_entry-right-info,
+    .sidebar-colored .sidebar-nav li:hover > a,
+    .sidebar-colored .sidebar-nav li:hover > a i,
+    .sidebar-colored .sidebar-nav li > a:hover,
+    .sidebar-colored .sidebar-nav li > a:hover i,
+    .sidebar-colored .sidebar-nav li > a:focus i,
+    .sidebar-colored .sidebar-nav > .open > a,
+    .sidebar-colored .sidebar-nav > .open > a:hover,
+    .sidebar-colored .sidebar-nav > .open > a:focus,
+    #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a{
+        color: #0097A7 !important
+    }
+    
+    .toTop{
+        background: #757575 !important
+    }
+		
+	.material-layout .material-post>.material-nav,
+	.material-layout .material-index>.material-nav,
+	.material-nav a{
+		color: #757575;
+	}
+		
+	#scheme-Paradox .MD-burger-layer {
+		background-color: #757575;
+	}
+
+	#scheme-Paradox #post-toc-trigger-btn{
+		color: #757575;
+	}
+	
+	.post-toc a:hover{
+		color: #00838F;
+		text-decoration: underline;
+	}
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+        body{
+            background-color: #F5F5F5
+        }
+		
+		/* blog_info bottom background */
+        #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text{
+            background-color: #fff;
+        }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+        .fade {
+            transition: all 800ms linear;
+            -webkit-transform: translate3d(0,0,0);
+            -moz-transform: translate3d(0,0,0);
+            -ms-transform: translate3d(0,0,0);
+            -o-transform: translate3d(0,0,0);
+            transform: translate3d(0,0,0);
+            opacity: 1;
+        }
+
+        .fade.out{
+            opacity: 0;
+        }
+    </style>
+
+	<script src="/js/jquery.min.js"></script>
+	
+	<link rel="stylesheet" href="/css/highlight/solarized-white.css">
+	
+	<!-- UC Browser Compatible-->
+	<script>
+		var agent = navigator.userAgent.toLowerCase();
+		if(agent.indexOf('ucbrowser')>0) {
+			document.write('<link rel="stylesheet" href="/css/uc.css">');
+		   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+		}
+	</script>
+    
+    <!-- Custom Head -->
+    
+</head>
+	
+	
+
+    <body id="scheme-Paradox">
+
+		
+        <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+				
+			
+			
+            <!-- Main Container -->
+            <main class="material-layout__content" id="main">
+				
+                <!-- Top Anchor -->
+                <div id="top"></div>
+				
+				
+                <!-- Hamburger Button -->
+                <button class="MD-burger-icon sidebar-toggle">
+                    <span class="MD-burger-layer"></span>
+                </button>
+				
+				
+                <!-- Post TOC -->
+
+    
+	<!-- Back Button -->
+<!--
+	<div class="material-back" id="backhome-div" tabindex="0">
+		<a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" href="#" onclick="window.history.back();return false;" target="_self" role="button" data-upgraded=",MaterialButton,MaterialRipple">
+			<i class="material-icons" role="presentation">arrow_back</i>
+			<span class="mdl-button__ripple-container">
+				<span class="mdl-ripple"></span>
+			</span>
+		</a>
+	</div>			
+-->
+	<!-- Left aligned menu below button -->
+	<button id="post-toc-trigger-btn"
+			class="mdl-button mdl-js-button mdl-button--icon">
+	  <i class="material-icons">format_list_numbered</i>
+	</button>
+
+	<ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect"
+		for="post-toc-trigger-btn">
+			
+			<ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#起步"><span class="post-toc-number">1.</span> <span class="post-toc-text">起步</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#简单思考-确定大致思路"><span class="post-toc-number">2.</span> <span class="post-toc-text">简单思考(确定大致思路)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#仔细思考（决定结构）"><span class="post-toc-number">3.</span> <span class="post-toc-text">仔细思考（决定结构）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#实现"><span class="post-toc-number">4.</span> <span class="post-toc-text">实现</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#添加贴纸"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">添加贴纸</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#找到贴纸"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">找到贴纸</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#移动贴纸"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">移动贴纸</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#缩放与旋转贴纸"><span class="post-toc-number">4.4.</span> <span class="post-toc-text">缩放与旋转贴纸</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#添加选中效果"><span class="post-toc-number">4.5.</span> <span class="post-toc-text">添加选中效果</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#总结"><span class="post-toc-number">5.</span> <span class="post-toc-text">总结</span></a></li></ol>
+		
+<!--			<li class="mdl-menu__item">Some Action</li>-->
+	</ul>
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+		
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+	<!-- Paradox Post Header -->
+	
+		
+			<!-- Random Thumbnail -->
+			<div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+				<script>
+    
+    var randomNum;
+    randomNum = Math.floor(Math.random() * 5 + 1);
+    
+    $(".post_thumbnail-random").css('background-image', 'url(' + '/img/random/' + randomNum + '.png' + ')');
+    
+</script>
+
+		
+	
+        <p class="article-headline-p">
+            Android自定义View实战之贴纸StickerView
+        </p>
+    </div>
+
+	
+
+				
+				
+					<!-- Paradox Post Info -->
+					<div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+    
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>Snowbean</strong>
+        <span>11月 02, 2016</span>
+    </div>
+    
+    <div class="section-spacer"></div>
+	
+    <!-- Favorite -->
+<!--
+    <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+        <i class="material-icons" role="presentation">favorite</i>
+        <span class="visuallyhidden">favorites</span>
+    </button>
+-->
+    
+    <!-- Tags (bookmark) -->
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/Android/">Android</a>
+    </ul>
+    
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+    
+    
+    
+    
+    <!-- Share Twitter -->
+    <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Android自定义View实战之贴纸StickerView&url=http://wuapnjie.github.io//2016/11/02/Android自定义View实战之StickerView/index.html&via=Snowbean" target="_blank">
+        <li class="mdl-menu__item">
+            分享到 Twitter
+        </li>
+    </a>
+    
+    <!-- Share Google+ -->
+    <a class="post_share-link" href="https://plus.google.com/share?url=http://wuapnjie.github.io//2016/11/02/Android自定义View实战之StickerView/index.html" target="_blank">
+        <li class="mdl-menu__item">
+            分享到 Google+
+        </li>
+    </a>
+    
+    <!-- Share Weibo -->
+    <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Android自定义View实战之贴纸StickerView&url=http://wuapnjie.github.io//2016/11/02/Android自定义View实战之StickerView/index.html&pic=&searchPic=false&style=simple" target="_blank">
+        <li class="mdl-menu__item">
+            分享到微博
+        </li>
+    </a>
+</ul>
+</div>
+				
+
+                <!-- Post Content -->
+                <div id="post-content" class="markdown-Github mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+	
+		<hr>
+<p>本篇文章为利用Matrix自定义View三部曲的第一部曲。</p>
+<p>虽然Android内置了许多View供开发者组合和使用，但其多样性还是不足，在很多场景或功能需求下，Android原生自带的控件并不足以实现我们的需求，这时我们就需要自定义满足我们需求的View。</p>
+<p>本文会讲解一个自定义View的设计和开发过程，在阅读之前希望大家有最基础的自定义View的知识，以及Matrix类的基本使用。</p>
+<h3 id="起步"><a href="#起步" class="headerlink" title="起步"></a>起步</h3><p>在很多图片社交的应用，例如Lofter、Play、In等应用中，都会有添加各种可爱的贴图到图片上的功能，然后我们可以对图片进行移动、旋转、缩放、翻转之类的操作，本文制作的View正是为了实现这个功能。最终我们将要实现的效果如下图：</p>
+<p><img src="http://7xrqmj.com1.z0.glb.clouddn.com/stickerview.gif" alt=""></p>
+<p>项目地址：<a href="https://github.com/wuapnjie/StickerView" target="_blank" rel="external">https://github.com/wuapnjie/StickerView</a></p>
+<h3 id="简单思考-确定大致思路"><a href="#简单思考-确定大致思路" class="headerlink" title="简单思考(确定大致思路)"></a>简单思考(确定大致思路)</h3><p>要实现这样的效果，我们肯定需要对图片进行操作，在自定义的View中，我们可以在<code>onDraw()</code>方法将我们的图片(通常为Bitmap)画到View上。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onDraw</span><span class="params">(Canvas canvas)</span> </span>&#123;</div><div class="line">    <span class="keyword">super</span>.onDraw(canvas);</div><div class="line">  	 canvas.drawBitmap(bitmap,matrix,paint);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><code>drawBitmap()</code>方法有许多重载方法，但是利用Matrix来控制画在View上的图片是最灵活最简单的。（不熟悉Matrix类可以先去了解下，这里就不介绍基础的知识了）</p>
+<p>利用Matrix可以方便的控制图片的位置，旋转角度，缩放比。</p>
+<p>再看我们的功能，用不同的手势来操作图片，既然利用Matrix可以操作图片，那么我们只需要在View的<code>onTouchEvent()</code>方法中监听不同的手势操作，再对其Matrix进行变换，重绘View即可。整个思路流程就很清楚了。</p>
+<h3 id="仔细思考（决定结构）"><a href="#仔细思考（决定结构）" class="headerlink" title="仔细思考（决定结构）"></a>仔细思考（决定结构）</h3><p>有了思路，那么我们就要来考虑我们应该怎么样组织代码，怎么样设计代码的结构。当然这个View并不复杂，设计起来也不复杂。</p>
+<p>首先，对于贴纸功能，在没有一张贴纸时就只显示一张图片，而这个功能ImageView已经为我们实现了，于是StickerView应该继承自ImageView，并且重写<code>onDraw()</code>和<code>onTouchEvent()</code>方法。</p>
+<p>其次，因为一张图片上可以添加多张贴纸，而每一张贴纸都需要一个Matrix来控制其相关变换，所以我们可以设计一个类封装一下，方便对贴纸的操作。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Sticker</span> </span>&#123;</div><div class="line">    <span class="keyword">protected</span> Matrix mMatrix;</div><div class="line">  	<span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">draw</span><span class="params">(Canvas canvas)</span></span>;</div><div class="line">  	……</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>因为贴纸可能是Bitmap，也就是普通的图片，但是我们也可以添加气泡啊，标签啊之类的自定义的Drawable，当然也可能是各种图形，为了其扩展性，这里将Sticker类抽象。扩展的<code>DrawableSticker</code></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DrawableSticker</span> <span class="keyword">extends</span> <span class="title">Sticker</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> Drawable mDrawable;</div><div class="line">    <span class="keyword">private</span> Rect mRealBounds;</div><div class="line">    ……</div><div class="line">  	<span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">draw</span><span class="params">(Canvas canvas)</span> </span>&#123;</div><div class="line">        canvas.save();</div><div class="line">        canvas.concat(mMatrix);</div><div class="line">        mDrawable.setBounds(mRealBounds);</div><div class="line">        mDrawable.draw(canvas);</div><div class="line">        canvas.restore();</div><div class="line">    &#125;</div><div class="line">  	……</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>那么大致的结构就确定了，在View的<code>onTouchEvent()</code>中，我们根据手势改变Sticker的Matrix，并在<code>onDraw()</code>方法中将Sticker画出。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onDraw</span><span class="params">(Canvas canvas)</span> </span>&#123;</div><div class="line">    <span class="keyword">super</span>.onDraw(canvas);</div><div class="line">  	……</div><div class="line">	sticker.draw(canvas);</div><div class="line">  	……</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><p>在有了思路和一个结构后，大致已经成功了一半，接下来就是一个个功能的实现，和一遍遍的调试了。</p>
+<p>由于我们可以添加不止一个Sticker，所以我们的StickerView需要保有对所有添加的Sticker应用，这里可以用一个List集合来储存。而对于当前正在操作的Sticker引用需要额外储存。</p>
+<p>因为对于不同的手势，我们所做出的操作不同，那么我们需要在内部声明所有存在的状态和一个当前状态</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StickerView</span> <span class="keyword">extends</span> <span class="title">ImageView</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">enum</span> ActionMode &#123;</div><div class="line">        NONE,   <span class="comment">//nothing</span></div><div class="line">        DRAG,   <span class="comment">//drag the sticker with your finger</span></div><div class="line">        ZOOM_WITH_TWO_FINGER,   <span class="comment">//zoom in or zoom out the sticker and rotate the sticker with two finger</span></div><div class="line">        ZOOM_WITH_ICON,    <span class="comment">//zoom in or zoom out the sticker and rotate the sticker with icon</span></div><div class="line">        DELETE,  <span class="comment">//delete the handling sticker</span></div><div class="line">        FLIP_HORIZONTAL <span class="comment">//horizontal flip the sticker</span></div><div class="line">    &#125;</div><div class="line">  	<span class="keyword">private</span> ActionMode mCurrentMode = ActionMode.NONE;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> List&lt;Sticker&gt; mStickers = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">    <span class="keyword">private</span> Sticker mHandlingSticker;</div><div class="line">  	……</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>接下来就是一个一个功能实现，但肯定的是，最先需要实现的就是将贴纸添加进来的方法。</p>
+<h4 id="添加贴纸"><a href="#添加贴纸" class="headerlink" title="添加贴纸"></a>添加贴纸</h4><p>实现起来也很简单，这里就是new一个Sticker对象，并把它加入到我们的List中并重绘，注意，我们默认将Sticker缩放至原来的一半，并放在StickerView中央。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addSticker</span><span class="params">(Drawable stickerDrawable)</span> </span>&#123;</div><div class="line">        Sticker drawableSticker = <span class="keyword">new</span> DrawableSticker(stickerDrawable);</div><div class="line"></div><div class="line">        <span class="keyword">float</span> offsetX = (getWidth() - drawableSticker.getWidth()) / <span class="number">2</span>;</div><div class="line">        <span class="keyword">float</span> offsetY = (getHeight() - drawableSticker.getHeight()) / <span class="number">2</span>;</div><div class="line">        drawableSticker.getMatrix().postTranslate(offsetX, offsetY);</div><div class="line"></div><div class="line">        <span class="keyword">float</span> scaleFactor;</div><div class="line">        <span class="keyword">if</span> (getWidth() &lt; getHeight()) &#123;</div><div class="line">            scaleFactor = (<span class="keyword">float</span>) getWidth() / stickerDrawable.getIntrinsicWidth();</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            scaleFactor = (<span class="keyword">float</span>) getHeight() / stickerDrawable.getIntrinsicWidth();</div><div class="line">        &#125;</div><div class="line">        drawableSticker.getMatrix().postScale(scaleFactor / <span class="number">2</span>, scaleFactor / <span class="number">2</span>, getWidth() / <span class="number">2</span>, getHeight() / <span class="number">2</span>);</div><div class="line"></div><div class="line">        mHandlingSticker = drawableSticker;</div><div class="line">        mStickers.add(drawableSticker);</div><div class="line"></div><div class="line">        invalidate();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="找到贴纸"><a href="#找到贴纸" class="headerlink" title="找到贴纸"></a>找到贴纸</h4><p>在我们的贴纸对象被添加进来后我们才可以继续接下来的操作，在我们触摸屏幕时，要判断是否按在贴纸区域，按在哪个贴纸上。实现比较简单，我们的每个Sticker都有一个矩形范围，在经过移动缩放之类的操作后也可以通过Matrix来轻松得到那个矩形区域（<code>Rect</code>类），只需要判断这个范围是否包含我们按下的点，而这一步应该在Touch事件的<code>ACTION_DOWN</code>事件中进行。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">switch</span> (action) &#123;</div><div class="line">     <span class="keyword">case</span> MotionEvent.ACTION_DOWN:</div><div class="line">         mCurrentMode = ActionMode.DRAG;</div><div class="line">         mDownX = event.getX();</div><div class="line">         mDownY = event.getY();</div><div class="line">         mHandlingSticker = findHandlingSticker();          </div><div class="line">          ……</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>其中<code>findHandlingSticker()</code>正是做了这样一些事情</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> Sticker <span class="title">findHandlingSticker</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = mStickers.size() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</div><div class="line">        <span class="keyword">if</span> (isInStickerArea(mStickers.get(i), mDownX, mDownY)) &#123;</div><div class="line">            <span class="keyword">return</span> mStickers.get(i);</div><div class="line">         &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="移动贴纸"><a href="#移动贴纸" class="headerlink" title="移动贴纸"></a>移动贴纸</h4><p>找到了我们要操作的Sticker后，我们就可以对其进行操作了，移动操作最为简单，只涉及一根手指，在<code>ACTION_DOWN</code>事件中我们记录下当前Sticker的状态和事件起始坐标，在<code>ACTION_MOVE</code>事件中，我们利用当前点的坐标计算出实际偏移量，利用Matrix的<code>postTransition()</code>方法让Sticker做出随手指的移动。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line">mMoveMatrix.set(mDownMatrix);</div><div class="line">mMoveMatrix.postTranslate(event.getX() - mDownX, event.getY() - mDownY);</div><div class="line">mHandlingSticker.getMatrix().set(mMoveMatrix);</div></pre></td></tr></table></figure>
+<h4 id="缩放与旋转贴纸"><a href="#缩放与旋转贴纸" class="headerlink" title="缩放与旋转贴纸"></a>缩放与旋转贴纸</h4><p>一般的缩放与旋转操作都是需要两根手指，所以我们需要在<code>ACTION_POINT_DOWN</code>事件中监听第二根手指按下。这时我们还需要计算出两根手指之间的距离以及中心点还有角度，因为我们要让Sticker以这个中心点为中心缩放旋转，在<code>ACTION_MOVE</code>事件中以新的两指尖距离/起始两指尖距离作为缩放比缩放。以新的角度-起始角度作为旋转角。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">switch</span> (action) &#123;</div><div class="line">     <span class="keyword">case</span> MotionEvent.ACTION_POINTER_DOWN:</div><div class="line">        mOldDistance = calculateDistance(event);</div><div class="line">    	mOldRotation = calculateRotation(event);</div><div class="line">        mMidPoint = calculateMidPoint(event);          </div><div class="line">          ……</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>相应的缩放与旋转，利用Matrix的<code>postScale</code>和<code>postRotate</code>方法实现</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">float</span> newDistance = calculateDistance(event);</div><div class="line"><span class="keyword">float</span> newRotation = calculateRotation(event);</div><div class="line"></div><div class="line">mMoveMatrix.set(mDownMatrix);</div><div class="line">mMoveMatrix.postScale(newDistance / mOldDistance, newDistance / mOldDistance, mMidPoint.x, mMidPoint.y);</div><div class="line">mMoveMatrix.postRotate(newRotation - mOldRotation, mMidPoint.x, mMidPoint.y);</div><div class="line"></div><div class="line">mHandlingSticker.getMatrix().set(mMoveMatrix);</div></pre></td></tr></table></figure>
+<h4 id="添加选中效果"><a href="#添加选中效果" class="headerlink" title="添加选中效果"></a>添加选中效果</h4><p>在经过上面的步骤后，我们的StickerView已经可以添加贴纸，用手势操纵贴纸移动，缩放，旋转了，但是我们并没有对选中的贴纸进行特殊处理，因为一般的应用对于选中的贴纸，都会用一个边框围住，并在相应的边框边角显示一些操作按钮。因为这个按钮有图标，所以我们也可以把其作为一个Sticker，只是还需要一个位置的x，y值。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BitmapStickerIcon</span> <span class="keyword">extends</span> <span class="title">DrawableSticker</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">float</span> x;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">float</span> y;</div><div class="line">  	……</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>因为对于每个Sticker的边框及其坐标是很容易获得的，所以我们只需要在<code>onDraw</code>方法中在正在处理的Sticker周围画上边框和按钮就可以了。下面的代码获得了选中Sticker的边角坐标，并将操作按钮画在相应位置。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">if</span> (mHandlingSticker != <span class="keyword">null</span> &amp;&amp; !mLooked) &#123;</div><div class="line"></div><div class="line">    <span class="keyword">float</span>[] bitmapPoints = getStickerPoints(mHandlingSticker);</div><div class="line"></div><div class="line">    <span class="keyword">float</span> x1 = bitmapPoints[<span class="number">0</span>];</div><div class="line">    <span class="keyword">float</span> y1 = bitmapPoints[<span class="number">1</span>];</div><div class="line">    <span class="keyword">float</span> x2 = bitmapPoints[<span class="number">2</span>];</div><div class="line">    <span class="keyword">float</span> y2 = bitmapPoints[<span class="number">3</span>];</div><div class="line">    <span class="keyword">float</span> x3 = bitmapPoints[<span class="number">4</span>];</div><div class="line">    <span class="keyword">float</span> y3 = bitmapPoints[<span class="number">5</span>];</div><div class="line">    <span class="keyword">float</span> x4 = bitmapPoints[<span class="number">6</span>];</div><div class="line">    <span class="keyword">float</span> y4 = bitmapPoints[<span class="number">7</span>];</div><div class="line"></div><div class="line">    canvas.drawLine(x1, y1, x2, y2, mBorderPaint);</div><div class="line">    canvas.drawLine(x1, y1, x3, y3, mBorderPaint);</div><div class="line">    canvas.drawLine(x2, y2, x4, y4, mBorderPaint);</div><div class="line">    canvas.drawLine(x4, y4, x3, y3, mBorderPaint);</div><div class="line"></div><div class="line">    <span class="keyword">float</span> rotation = calculateRotation(x3, y3, x4, y4);</div><div class="line">    <span class="comment">//draw delete icon</span></div><div class="line">    canvas.drawCircle(x1, y1, mIconRadius, mBorderPaint);</div><div class="line">    mDeleteIcon.setX(x1);</div><div class="line">    mDeleteIcon.setY(y1);</div><div class="line">    mDeleteIcon.getMatrix().reset();</div><div class="line"></div><div class="line">    mDeleteIcon.getMatrix().postRotate(</div><div class="line">                    rotation, mDeleteIcon.getWidth() / <span class="number">2</span>, mDeleteIcon.getHeight() / <span class="number">2</span>);</div><div class="line">    mDeleteIcon.getMatrix().postTranslate(</div><div class="line">                    x1 - mDeleteIcon.getWidth() / <span class="number">2</span>, y1 - mDeleteIcon.getHeight() / <span class="number">2</span>);</div><div class="line"></div><div class="line">    mDeleteIcon.draw(canvas);</div><div class="line"></div><div class="line">            <span class="comment">//draw zoom icon</span></div><div class="line">    canvas.drawCircle(x4, y4, mIconRadius, mBorderPaint);</div><div class="line">    mZoomIcon.setX(x4);</div><div class="line">    mZoomIcon.setY(y4);</div><div class="line"></div><div class="line">    mZoomIcon.getMatrix().reset();</div><div class="line">    mZoomIcon.getMatrix().postRotate(</div><div class="line">                    <span class="number">45f</span> + rotation, mZoomIcon.getWidth() / <span class="number">2</span>, mZoomIcon.getHeight() / <span class="number">2</span>);</div><div class="line"></div><div class="line">    mZoomIcon.getMatrix().postTranslate(</div><div class="line">                    x4 - mZoomIcon.getWidth() / <span class="number">2</span>, y4 - mZoomIcon.getHeight() / <span class="number">2</span>);</div><div class="line"></div><div class="line">    mZoomIcon.draw(canvas);</div><div class="line"></div><div class="line">    <span class="comment">//draw flip icon</span></div><div class="line">    canvas.drawCircle(x2, y2, mIconRadius, mBorderPaint);</div><div class="line">    mFlipIcon.setX(x2);</div><div class="line">    mFlipIcon.setY(y2);</div><div class="line"></div><div class="line">    mFlipIcon.getMatrix().reset();</div><div class="line">    mFlipIcon.getMatrix().postRotate(</div><div class="line">                    rotation, mDeleteIcon.getWidth() / <span class="number">2</span>, mDeleteIcon.getHeight() / <span class="number">2</span>);</div><div class="line">    mFlipIcon.getMatrix().postTranslate(</div><div class="line">                    x2 - mFlipIcon.getWidth() / <span class="number">2</span>, y2 - mFlipIcon.getHeight() / <span class="number">2</span>);</div><div class="line"></div><div class="line">    mFlipIcon.draw(canvas);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>这样，我们大致完成了StickerView的所有功能，当然上面并没有太完整的代码，只是一些代码片段，但是已经说明了大致的思路及操作，想了解更多细节可以去查看<a href="https://github.com/wuapnjie/StickerView" target="_blank" rel="external">源码</a>。我们在自定义View时，首先最需要的是一个思路，有了思路之后要想其代码结构，在这两块都想好了以后再开发其功能，会事半功倍。</p>
+<p>希望可以对你有帮助。如果有什么疑问，可以随时联系我，欢迎提issue和pr。</p>
+
+	
+	
+	
+	
+</div>
+				
+				
+
+                <!-- Post Comments -->
+                
+                    
+    <!-- 使用多说评论 -->
+    <link rel="stylesheet" href="/css/duoshuo.min.css">
+<style>
+    #ds-thread #ds-reset .ds-post-button{
+        background-color: #0097A7 !important;
+    }
+    #ds-wrapper #ds-reset .ds-icons-32{
+        background-color: #0097A7 !important;
+    }
+    #ds-reset .ds-highlight {
+        color: #0097A7 !important;
+    }
+</style>
+<div id="comments">
+    <!-- 多说评论框 start -->
+        <div class="ds-thread" 
+            data-thread-key="2016/11/02/Android自定义View实战之StickerView/" 
+            data-url="http://wuapnjie.github.io/2016/11/02/Android自定义View实战之StickerView/"
+            data-title="Android自定义View实战之贴纸StickerView"></div>
+    <!-- 多说评论框 end -->
+</div>
+
+
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    
+    <!-- Prev Nav -->
+    
+        <a href="/2016/11/02/Android自定义View实战之PuzzleView/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2016/09/08/Fresco日常配置及使用/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+        </div>
+    </div>
+
+				
+				
+					<!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay "></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored  sidebar-fixed-left" role="navigation">
+	<div id="sidebar-main">
+	    <!-- Sidebar Header -->
+		<div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+    <i class="material-icons">clear_all</i>
+    <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.png" alt="Snowbean's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        wupanjie0611@email.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+		<!-- Sidebar Navigation  -->
+		<ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+			
+                <li>
+                    <a href="#" target="_blank" title="Email Me">
+						<i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    <li id="sidebar-first-li">
+        <a href="/" target="_self">
+            <i class="material-icons sidebar-material-icons">home</i>
+             主页
+        </a>
+    </li>
+
+    <!-- I'm Feeling Lucky -->
+<!--
+    <li class="dropdown">
+        <a href="" target="_self">
+            <i class="material-icons sidebar-material-icons">explore</i>
+             sidebar.imlucky
+        </a>
+    </li>
+-->
+
+	
+    <!-- Archives  -->
+    <li class="dropdown">
+        <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+            <i class="material-icons sidebar-material-icons">inbox</i>
+             归档
+            <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+            <li>
+            <a class="sidebar_archives-link" href="/archives/2017/01/">一月 2017<span class="sidebar_archives-count">8</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/12/">十二月 2016<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/11/">十一月 2016<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/09/">九月 2016<span class="sidebar_archives-count">6</span></a>
+        </ul>
+    </li>
+
+    <!-- Divider -->
+    <li class="divider"></li>
+
+
+    <!-- Pages  -->
+	
+
+    <!-- Article Numebr  -->
+    <li>
+        <a href="/archives">
+             文章总数
+             <span class="sidebar-badge">21</span>
+        </a>
+    </li>
+</ul>
+
+		<!-- Sidebar Divider -->
+		<div class="sidebar-divider"></div>
+
+		<!-- Sidebar Footer -->
+		<!-- 
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持。 :) 
+-->
+
+<!-- Theme Material -->
+<a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
+	<div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+		主题 - Material
+		<span class="sidebar-badge badge-circle">i</span>
+	</div>
+</a>
+
+<!-- Help & Support -->
+<!--
+<a href="mailto:hiviosey@gmail.com" class="sidebar-footer-text-a">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+		sidebar.help
+		<span class="mdl-button__ripple-container">
+			<span class="mdl-ripple"></span>
+		</span>
+	</div>
+</a>
+-->
+
+<!-- Feedback -->
+<!--
+<a href="https://github.com/viosey/hexo-theme-material/issues" target="_blank" class="sidebar-footer-text-a">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+         sidebar.feedback
+                    <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></div>
+</a>
+-->
+
+<!-- Abount Theme -->
+<!--
+<a href="https://blog.viosey.com/index.php/Material.html" target="_blank" class="sidebar-footer-text-a">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+         sidebar.about_theme
+        <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></div>
+</a>-->
+
+	</div>
+    
+    <!-- Sidebar Sponsor -->
+    
+
+
+</aside>
+
+				
+				
+				
+					<!-- Footer Top Button -->
+					<div class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+				
+				
+				<!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+	
+	
+		<!-- Paradox Footer Left Section -->
+		<div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+    <a href="https://twitter.com/twitter" target="view_window"><button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-twitter.png);">
+        <span class="visuallyhidden">Twitter</span>
+    </button></a>
+    
+    
+    <!-- Facebook -->
+    
+    <a href="https://www.facebook.com/facebook" target="view_window"><button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-facebook.png);">
+        <span class="visuallyhidden">Facebook</span>
+    </button></a>
+    
+    
+    <!-- Google + -->
+    
+    <a href="https://www.google.com/" target="view_window"><button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-gplus.png);">
+        <span class="visuallyhidden">Google Plus</span>
+    </button></a>
+    
+    
+    <!-- Weibo -->
+    
+    
+    
+    <!-- Instagram -->
+    
+    
+    
+    <!-- Tumblr -->
+    
+    
+    
+    <!-- Github -->
+    
+    <a href="https://github.com/wuapnjie" target="view_window"><button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-github.png);">
+        <span class="visuallyhidden">Github</span>
+    </button></a>
+    
+</div>
+
+
+		<!--Copyright-->
+		<div id="copyright">Copyright&nbsp;©&nbsp;<script type="text/javascript">var fd = new Date();document.write(fd.getFullYear());</script>&nbsp;Snowbean's Blog</div>
+
+		<!-- Paradox Footer Right Section -->
+
+		<!-- 
+		I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+		It will not impact the appearance and can give developers a lot of support :)
+
+		很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+		它不会影响美观并可以给开发者很大的支持。 :) 
+		-->
+
+		<div class="mdl-mini-footer--right-section">
+			<div>
+				<div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+				<div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+			</div>
+		</div>
+	
+    
+</footer>
+                
+				<!-- Import File -->
+<script src="/js/highlight.min.js"></script>
+<script src="/js/js.min.js"></script>
+<script src="/js/nprogress.js"></script>
+
+<script type="text/javascript">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    
+    $('#nprogress .bar').css({
+        'background': '#FF4081'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #FF4081, 0 0 15px #FF4081'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#FF4081',
+        'border-left-color': '#FF4081'
+    });
+    
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+    <!-- 多说公共 js 代码 start -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"wuapnjie"};
+        (function() {
+            var ds = document.createElement('script');
+            ds.type = 'text/javascript';ds.async = true;
+            ds.src = 'https://static.duoshuo.com/embed.js';
+            ds.charset = 'UTF-8';
+            (document.getElementsByTagName('head')[0] 
+             || document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+    </script>
+    <!-- 多说公共 js 代码 end -->
+
+
+
+
+<!-- Swiftye -->
+
+
+<!-- Local Search-->
+
+
+<!-- Window Load-->
+<script>
+    $(window).load(function() {
+        // Post_Toc parent position fixed
+        $(".post-toc-wrap").parent(".mdl-menu__container").css("position", "fixed");
+    });
+</script>
+
+<!-- MathJax Load-->
+
+            </main>
+        </div>
+		
+    </body>
+		
+	
+</html>

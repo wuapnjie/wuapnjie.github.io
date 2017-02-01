@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <!-- Title -->
+    
+    <title>
+        Android自定义View实战之拼图PuzzleView | Snowbean&#39;s Blog
+    </title>
+    
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon" sizes="192x192" href="/img/favicon.png">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+    
+    <!-- Meta & INfo -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0097A7">
+    <meta name="author" content="Snowbean">
+    <meta name="description" content="Keep Calm and Carry on!">
+    <meta name="keywords" content="null">
+    
+    <!--iOS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-title" content="Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="480">
+    
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Snowbean&#39;s Blog">
+    
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://wuapnjie.github.io">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="Android自定义View实战之拼图PuzzleView | Snowbean&#39;s Blog">
+    <meta property="og:description" content="Keep Calm and Carry on!">
+    
+     <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+        
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+    
+    <!-- Import CSS -->
+    <link rel="stylesheet" href="/css/material.min.css">
+    <link rel="stylesheet" href="/css/style.min.css">
+    <!-- Config CSS -->
+
+
+<!-- Other Styles -->
+<style>
+	body, html{
+		font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+	}
+	
+    a{
+        color: #00838F
+    }
+    
+    .mdl-card__media,
+    #search-label,
+    #search-form-label:after,
+    #scheme-Paradox .hot_tags-count,
+    #scheme-Paradox .sidebar_archives-count,
+    #scheme-Paradox .sidebar-colored .sidebar-header,
+    #scheme-Paradox .sidebar-colored .sidebar-badge{
+        background-color: #0097A7 !important
+    }
+    
+	/* Sidebar User Drop Down Menu Text Color */
+	#scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+    #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus{
+        color: #0097A7 !important
+    }
+    
+    #post_entry-right-info,
+    .sidebar-colored .sidebar-nav li:hover > a,
+    .sidebar-colored .sidebar-nav li:hover > a i,
+    .sidebar-colored .sidebar-nav li > a:hover,
+    .sidebar-colored .sidebar-nav li > a:hover i,
+    .sidebar-colored .sidebar-nav li > a:focus i,
+    .sidebar-colored .sidebar-nav > .open > a,
+    .sidebar-colored .sidebar-nav > .open > a:hover,
+    .sidebar-colored .sidebar-nav > .open > a:focus,
+    #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a{
+        color: #0097A7 !important
+    }
+    
+    .toTop{
+        background: #757575 !important
+    }
+		
+	.material-layout .material-post>.material-nav,
+	.material-layout .material-index>.material-nav,
+	.material-nav a{
+		color: #757575;
+	}
+		
+	#scheme-Paradox .MD-burger-layer {
+		background-color: #757575;
+	}
+
+	#scheme-Paradox #post-toc-trigger-btn{
+		color: #757575;
+	}
+	
+	.post-toc a:hover{
+		color: #00838F;
+		text-decoration: underline;
+	}
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+        body{
+            background-color: #F5F5F5
+        }
+		
+		/* blog_info bottom background */
+        #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text{
+            background-color: #fff;
+        }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+        .fade {
+            transition: all 800ms linear;
+            -webkit-transform: translate3d(0,0,0);
+            -moz-transform: translate3d(0,0,0);
+            -ms-transform: translate3d(0,0,0);
+            -o-transform: translate3d(0,0,0);
+            transform: translate3d(0,0,0);
+            opacity: 1;
+        }
+
+        .fade.out{
+            opacity: 0;
+        }
+    </style>
+
+	<script src="/js/jquery.min.js"></script>
+	
+	<link rel="stylesheet" href="/css/highlight/solarized-white.css">
+	
+	<!-- UC Browser Compatible-->
+	<script>
+		var agent = navigator.userAgent.toLowerCase();
+		if(agent.indexOf('ucbrowser')>0) {
+			document.write('<link rel="stylesheet" href="/css/uc.css">');
+		   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+		}
+	</script>
+    
+    <!-- Custom Head -->
+    
+</head>
+	
+	
+
+    <body id="scheme-Paradox">
+
+		
+        <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+				
+			
+			
+            <!-- Main Container -->
+            <main class="material-layout__content" id="main">
+				
+                <!-- Top Anchor -->
+                <div id="top"></div>
+				
+				
+                <!-- Hamburger Button -->
+                <button class="MD-burger-icon sidebar-toggle">
+                    <span class="MD-burger-layer"></span>
+                </button>
+				
+				
+                <!-- Post TOC -->
+
+    
+	<!-- Back Button -->
+<!--
+	<div class="material-back" id="backhome-div" tabindex="0">
+		<a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" href="#" onclick="window.history.back();return false;" target="_self" role="button" data-upgraded=",MaterialButton,MaterialRipple">
+			<i class="material-icons" role="presentation">arrow_back</i>
+			<span class="mdl-button__ripple-container">
+				<span class="mdl-ripple"></span>
+			</span>
+		</a>
+	</div>			
+-->
+	<!-- Left aligned menu below button -->
+	<button id="post-toc-trigger-btn"
+			class="mdl-button mdl-js-button mdl-button--icon">
+	  <i class="material-icons">format_list_numbered</i>
+	</button>
+
+	<ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect"
+		for="post-toc-trigger-btn">
+			
+			<ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#起步"><span class="post-toc-number">1.</span> <span class="post-toc-text">起步</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#确定思路"><span class="post-toc-number">2.</span> <span class="post-toc-text">确定思路</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#建立模型"><span class="post-toc-number">3.</span> <span class="post-toc-text">建立模型</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#具体实现"><span class="post-toc-number">4.</span> <span class="post-toc-text">具体实现</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#布局方式的确定"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">布局方式的确定</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#图片位置的确立与放置"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">图片位置的确立与放置</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#图片移动旋转缩放翻转"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">图片移动旋转缩放翻转</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#线的移动"><span class="post-toc-number">4.4.</span> <span class="post-toc-text">线的移动</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#图片位置交换"><span class="post-toc-number">4.5.</span> <span class="post-toc-text">图片位置交换</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#图片翻转"><span class="post-toc-number">4.6.</span> <span class="post-toc-text">图片翻转</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#尾声"><span class="post-toc-number">4.7.</span> <span class="post-toc-text">尾声</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#总结"><span class="post-toc-number">5.</span> <span class="post-toc-text">总结</span></a></li></ol>
+		
+<!--			<li class="mdl-menu__item">Some Action</li>-->
+	</ul>
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+		
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+	<!-- Paradox Post Header -->
+	
+		
+			<!-- Random Thumbnail -->
+			<div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+				<script>
+    
+    var randomNum;
+    randomNum = Math.floor(Math.random() * 5 + 1);
+    
+    $(".post_thumbnail-random").css('background-image', 'url(' + '/img/random/' + randomNum + '.png' + ')');
+    
+</script>
+
+		
+	
+        <p class="article-headline-p">
+            Android自定义View实战之拼图PuzzleView
+        </p>
+    </div>
+
+	
+
+				
+				
+					<!-- Paradox Post Info -->
+					<div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+    
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>Snowbean</strong>
+        <span>11月 02, 2016</span>
+    </div>
+    
+    <div class="section-spacer"></div>
+	
+    <!-- Favorite -->
+<!--
+    <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+        <i class="material-icons" role="presentation">favorite</i>
+        <span class="visuallyhidden">favorites</span>
+    </button>
+-->
+    
+    <!-- Tags (bookmark) -->
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/Android/">Android</a>
+    </ul>
+    
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+    
+    
+    
+    
+    <!-- Share Twitter -->
+    <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Android自定义View实战之拼图PuzzleView&url=http://wuapnjie.github.io//2016/11/02/Android自定义View实战之PuzzleView/index.html&via=Snowbean" target="_blank">
+        <li class="mdl-menu__item">
+            分享到 Twitter
+        </li>
+    </a>
+    
+    <!-- Share Google+ -->
+    <a class="post_share-link" href="https://plus.google.com/share?url=http://wuapnjie.github.io//2016/11/02/Android自定义View实战之PuzzleView/index.html" target="_blank">
+        <li class="mdl-menu__item">
+            分享到 Google+
+        </li>
+    </a>
+    
+    <!-- Share Weibo -->
+    <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Android自定义View实战之拼图PuzzleView&url=http://wuapnjie.github.io//2016/11/02/Android自定义View实战之PuzzleView/index.html&pic=&searchPic=false&style=simple" target="_blank">
+        <li class="mdl-menu__item">
+            分享到微博
+        </li>
+    </a>
+</ul>
+</div>
+				
+
+                <!-- Post Content -->
+                <div id="post-content" class="markdown-Github mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+	
+		<hr>
+<p>本篇文章为利用Matrix自定义View的第二篇，第一篇见<a href="http://www.jianshu.com/p/fc37baa97fc3" target="_blank" rel="external">Android自定义View实战之StickerView</a></p>
+<p>在阅读本篇文章之前，希望大家有基本的自定义View知识和Matrix的知识，当然最好阅读了前一篇，因为很多东西是相通的，本文的重点在于前期的思考，至于具体实现细节可以不看，选择看<a href="https://github.com/wuapnjie/PuzzleView" target="_blank" rel="external">源码</a>。</p>
+<h3 id="起步"><a href="#起步" class="headerlink" title="起步"></a>起步</h3><p>在图片的处理软件中，拼图是很常见的一种处理方法，我最喜欢Layout for Instagram的拼图效果，简单却又足够强大，拼图方式多种多样可以对图片进行水平垂直翻转，移位，移动，缩放，改变大小之类的操作，看到这样的操作。本文制作的View正是为了实现这个功能。先看最终我们实现的效果。</p>
+<p><strong>多种布局</strong></p>
+<p><img src="http://7xrqmj.com1.z0.glb.clouddn.com/puzzle2.mp4_1472025098.gif?imageView2/2/w/200" alt=""></p>
+<p><strong>具体布局编辑</strong></p>
+<p><img src="http://7xrqmj.com1.z0.glb.clouddn.com/gif-demo1.gif?imageView2/2/w/200" alt=""></p>
+<p>项目地址：<a href="https://github.com/wuapnjie/PuzzleView" target="_blank" rel="external">https://github.com/wuapnjie/PuzzleView</a></p>
+<h3 id="确定思路"><a href="#确定思路" class="headerlink" title="确定思路"></a>确定思路</h3><p>在前面介绍中，我们知道这一次我们还是对图片的一系列变换操作，那么这次我们的实现思路也是在<code>onTouchEvent()</code>中根据手势控制对应的<code>Matrix</code>来对所画在View上的图片进行操作。</p>
+<p>再仔细看我们的效果，在一个View中我们可能要画上许多张图片，但是位置都不同，且互相不会覆盖，那么可以看出我们对View进行了分割，分成不同的矩形，了解<code>canvas</code>的同学知道，<code>canvas</code>可以先进行一系列变换后再进行绘制，绘制完成后恢复，这次利用的就是<code>canvas</code>的<code>clipRect()</code>方法将<code>canvas</code>分成不同的矩形区域进行绘制，先来看看大致效果可不可以达到我们的预期。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onDraw</span><span class="params">(Canvas canvas)</span> </span>&#123;</div><div class="line">    <span class="keyword">super</span>.onDraw(canvas);</div><div class="line"></div><div class="line">    canvas.save();</div><div class="line">    canvas.clipRect(<span class="number">0</span>, <span class="number">0</span>, getWidth() / <span class="number">2</span>, getHeight());</div><div class="line">    canvas.drawBitmap(mBitmapOne, <span class="number">0</span>, <span class="number">0</span>, mBitmapPaint);</div><div class="line">    canvas.restore();</div><div class="line"></div><div class="line">    canvas.save();</div><div class="line">    canvas.clipRect(getWidth() / <span class="number">2</span>, <span class="number">0</span>, getWidth(), getHeight());</div><div class="line">    canvas.drawBitmap(mBitmapTwo, <span class="number">0</span>, <span class="number">0</span>, mBitmapPaint);</div><div class="line">    canvas.restore();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="http://7xrqmj.com1.z0.glb.clouddn.com/PoiDemo-Rect.png?imageView2/2/w/360" alt=""></p>
+<p>可以看到，这样是可以达到我们想要的图片排列方式的，只需要对图片进行矩阵操作，让其适应给定的矩形区域就好了。</p>
+<p>那么第一步的思路超不多就想好了，我们做到了如何在一个View中排列多张图片，接下来要思考如何分割外围的矩形（View的边界矩形）。</p>
+<p>我们知道Android内置了<code>Rect</code>类，用上下左右四个坐标确定一个矩形，一个大的矩形可以很容易的分为许多小的矩形，类似这样</p>
+<p> <img src="http://7xrqmj.com1.z0.glb.clouddn.com/rect.png" alt="rect"></p>
+<p>一个大的矩形被分为三个小矩形。但是这个内置的<code>Rect</code>类真的能帮助我们完成效果吗？</p>
+<p>答案是不能的，虽然内置的<code>Rect</code>类可以成功帮助我们确定每张图片的位置，令图片被画在正确的位置上，但是有一点致命的是，它内部是由上下左右四个坐标确定的，仔细看我们要实现的效果，在随着我们手指对矩形边线的移动，大矩形内的小矩形大小边界是在改变的，而且收到影响的矩形肯定大于等于2个，那么我们要改变坐标的矩形也就会大于等于2个，编码上会复杂且容易出错，所以我们不能单单只用<code>Rect</code>类来确定边界。我们必须在抽象出一种新的模型来确定图片的矩形区域并方便数据更新变化。</p>
+<p>在反复把玩Layout for Instagram后（因为当时我还没做出这个View，一直拿Layout研究，希望你也可以去多玩一下），并把它的所有布局都在纸上画了一遍，我发现了很关键的一点，也是这个自定义View最关键的一部。它的线很重要（当我们点击其中一张图片后，它会成为选中状态，那个线是高亮的，引人注意哦），我们每次移动的时那一根线，而一个矩形可以被一根直线或横线划分成两个矩形，而四根线可以确定一个矩形范围，两个矩形可以共享一根线，线的位置改变，共享这根线的所有矩形的大小范围都会改变。类似这样</p>
+<p><img src="http://7xrqmj.com1.z0.glb.clouddn.com/rect2.png" alt=""></p>
+<ul>
+<li>line1,line2,line4,line5组成了Rect1</li>
+<li>line2,line3,line4,line5组成了Rect2</li>
+<li>Rect1和Rect2共享line2，line4，line5</li>
+<li>移动了line2后，Rect1和Rect2均收到影响</li>
+</ul>
+<p>希望大家理解这幅图，这是本次自定义View的关键。</p>
+<p>那么整理一下大致思路，我们要用线将View的边界分成许多个小矩形，并让图片画在这些小矩形上，之后同上一篇文章一致，根据我们的手势控制对应图片的<code>Matrix</code>来控制图片的相应动作。</p>
+<h3 id="建立模型"><a href="#建立模型" class="headerlink" title="建立模型"></a>建立模型</h3><p>既然思路已经确定了，那么我们就要来确定我们的代码结构和相应的模型类。上面讲我们要用线来分割矩形，而Android原生是没有Line这个模型类的，于是我们要自己抽象一个。那么线是怎么组成的呢？很简单，在坐标系中，两点确定一根直线，所以我们要有两个点<code>PointF</code>，因为我们只用横线或直线，所以只抽象了两个方向，斜线不考虑（本效果只需要直线和横线）。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Line</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="keyword">enum</span> Direction &#123;</div><div class="line">        HORIZONTAL,</div><div class="line">        VERTICAL</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * for horizontal line, start means left, end means right</div><div class="line">     * for vertical line, start means top, end means bottom</div><div class="line">     */</div><div class="line">    <span class="keyword">final</span> PointF start;</div><div class="line">    <span class="keyword">final</span> PointF end;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> Direction direction = Direction.HORIZONTAL;</div><div class="line">  	……</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>但是这么几个属性真的够用吗？在我试验了之后发现是不够的，我们还需要另外四个属性，是四根其他的线，两根确定其移动范围的线，两根顶点依附的线。</p>
+<p><img src="http://7xrqmj.com1.z0.glb.clouddn.com/rect3.png" alt=""></p>
+<p>于是我们Line的模型类就可以去确定了。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Line</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="keyword">enum</span> Direction &#123;</div><div class="line">        HORIZONTAL,</div><div class="line">        VERTICAL</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * for horizontal line, start means left, end means right</div><div class="line">     * for vertical line, start means top, end means bottom</div><div class="line">     */</div><div class="line">    <span class="keyword">final</span> PointF start;</div><div class="line">    <span class="keyword">final</span> PointF end;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> Direction direction = Direction.HORIZONTAL;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> Line attachLineStart;</div><div class="line">    <span class="keyword">private</span> Line attachLineEnd;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> Line mUpperLine;</div><div class="line">    <span class="keyword">private</span> Line mLowerLine;</div><div class="line">	……</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>那么我们就可以确定一个边界<code>Border</code>类，它由4条<code>Line</code>构成，并可方便的导出<code>Rect</code>对象方便我们摆放图片。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Border</span> </span>&#123;</div><div class="line">    Line lineLeft;</div><div class="line">    Line lineTop;</div><div class="line">    Line lineRight;</div><div class="line">    Line lineBottom;</div><div class="line">	……</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>接下来就要思考如何支持多样化布局，当然要提供接口供使用者自定义，所以我们要抽象出一个拼图布局类<code>PuzzleLayout</code>，这个类要有个抽象方法支持我们自定义布局，并提供一些简单的方法帮助我们快速布局，并且应该保有所有的边界<code>Border</code>和<code>Line</code>对象，方便进行管理和更新信息。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">PuzzleLayout</span> </span>&#123;</div><div class="line">	……</div><div class="line">    <span class="keyword">private</span> Border mOuterBorder;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> List&lt;Border&gt; mBorders = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">    <span class="keyword">private</span> List&lt;Line&gt; mLines = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">    <span class="keyword">private</span> List&lt;Line&gt; mOuterLines = <span class="keyword">new</span> ArrayList&lt;&gt;(<span class="number">4</span>);</div><div class="line">  	……</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">layout</span><span class="params">()</span></span>;</div><div class="line">  	……</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>至于图片对象，同上一篇文章一样，每张图片需要一个<code>Matrix</code>对象进行控制，只是在这之上还要保有一个边界<code>Border</code>的引用。这里就不贴了。</p>
+<p>这样，我们所有的模型就已经确定了。大致关系就是，每个<code>PuzzleView</code>的布局方式由<code>PuzzleLayout</code>决定，<code>PuzzleLayout</code>可自定义布局，由一系列的边界<code>Border</code>组成，而<code>Border</code>则由一系列的<code>Line</code>组成。</p>
+<h3 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h3><p>由于许多东西的关键都是思路和建模，大家理解了这个思路并建立了正确方便的模型后，实现起来就异常容易了，只是在预定的轨道上开车到终点就好了，其实后面的内容已经不重要了。</p>
+<h4 id="布局方式的确定"><a href="#布局方式的确定" class="headerlink" title="布局方式的确定"></a>布局方式的确定</h4><p>起初，我们要先把布局方式确定才可以决定画多少张图片上去，所以布局方式是最先要被解决的功能。</p>
+<p>大家都知道，一根直线可以把一个矩形分成左右两个矩形，一根横线可以把一个矩形分成上下两个矩形，所以我们可以提供一个<code>addLine()</code>方法提供分割布局，将增加的<code>Line</code>和<code>Border</code>添加至集合。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">protected</span> List&lt;Border&gt; <span class="title">addLine</span><span class="params">(Border border, Line.Direction direction, <span class="keyword">float</span> ratio)</span> </span>&#123;</div><div class="line">    mBorders.remove(border);</div><div class="line">    Line line = BorderUtil.createLine(border, direction, ratio);</div><div class="line">    mLines.add(line);</div><div class="line"></div><div class="line">    List&lt;Border&gt; borders = BorderUtil.cutBorder(border, line);</div><div class="line">    mBorders.addAll(borders);</div><div class="line"></div><div class="line">    updateLineLimit();</div><div class="line">    Collections.sort(mBorders, mBorderComparator);</div><div class="line"></div><div class="line">    <span class="keyword">return</span> borders;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>当然只有这么一个方法布局还是不怎么方便的哈，所以我还添加了许多方法方便布局，比如一个十字可以把一个矩形分割成四个矩形，一个螺旋可以把一个矩形分割成五个矩形。提供的方法大致就如下图所示</p>
+<p><img src="http://7xrqmj.com1.z0.glb.clouddn.com/puzzle.png" alt=""></p>
+<p>举个例子:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">layout</span><span class="params">()</span> </span>&#123;</div><div class="line">    addLine(getOuterBorder(), Line.Direction.VERTICAL, <span class="number">1f</span> / <span class="number">2</span>);</div><div class="line">    cutBorderEqualPart(getBorder(<span class="number">1</span>), <span class="number">4</span>, Line.Direction.HORIZONTAL);</div><div class="line">    cutBorderEqualPart(getBorder(<span class="number">0</span>), <span class="number">3</span>, Line.Direction.HORIZONTAL);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>之后我们看一下这种布局分割的效果</p>
+<p><img src="http://7xrqmj.com1.z0.glb.clouddn.com/puzzle-layout-demo.png?imageView2/2/w/360" alt=""></p>
+<h4 id="图片位置的确立与放置"><a href="#图片位置的确立与放置" class="headerlink" title="图片位置的确立与放置"></a>图片位置的确立与放置</h4><p>到这里，我们已经可以自定义各种各样的布局了，一个View已经被我们分割成了许多小的矩形区域，接下来我们就要把图片给画上去，但不是随便画，我们需要让图片在对应的矩形以<code>centerCrop</code>的方式显示，不然我们看到的就不是图片的重要区域。那么怎么样才可以做到呢？由于每个矩形的位置我们都是知道的，所以我们只需要将图片的中心移动到对应矩阵的中心，按<code>centerCrop</code>的缩放规则让图片中心缩放就好了。这些就是<code>Matrix</code>的基本应用了，这里就不重复说明了，至于<code>centerCrop</code>的缩放比也很好计算，不会的话，看一下<code>ImageView</code>的源码就好了。</p>
+<p>下面的代码是生成让图片已对应<code>Border</code>正确显示的<code>Matrix</code>生成 </p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">static</span> Matrix <span class="title">createMatrix</span><span class="params">(Border border, <span class="keyword">int</span> width, <span class="keyword">int</span> height, <span class="keyword">float</span> extraSize)</span> </span>&#123;</div><div class="line">        <span class="keyword">final</span> RectF rectF = border.getRect();</div><div class="line"></div><div class="line">        Matrix matrix = <span class="keyword">new</span> Matrix();</div><div class="line"></div><div class="line">        <span class="keyword">float</span> offsetX = rectF.centerX() - width / <span class="number">2</span>;</div><div class="line">        <span class="keyword">float</span> offsetY = rectF.centerY() - height / <span class="number">2</span>;</div><div class="line"></div><div class="line">        matrix.postTranslate(offsetX, offsetY);</div><div class="line"></div><div class="line">        <span class="keyword">float</span> scale;</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (width * rectF.height() &gt; rectF.width() * height) &#123;</div><div class="line">            scale = (rectF.height() + extraSize) / height;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            scale = (rectF.width() + extraSize) / width;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        matrix.postScale(scale, scale, rectF.centerX(), rectF.centerY());</div><div class="line"></div><div class="line">    <span class="keyword">return</span> matrix;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>将图片画上去后的效果，是不是效果很好呀？</p>
+<p><img src="http://7xrqmj.com1.z0.glb.clouddn.com/20160824_164657.jpg?imageView2/2/w/360" alt=""></p>
+<h4 id="图片移动旋转缩放翻转"><a href="#图片移动旋转缩放翻转" class="headerlink" title="图片移动旋转缩放翻转"></a>图片移动旋转缩放翻转</h4><p>这个功能和上一篇所讲的方法一致，在<code>onTouchEvent()</code>中监听不同的手势，对对应图片的<code>Matrix</code>做出相关操作即可，这里就不重复说明了，比较基础。</p>
+<h4 id="线的移动"><a href="#线的移动" class="headerlink" title="线的移动"></a>线的移动</h4><p>看效果图，这个布局并不是不变的，我们可以通过对可移动线的移动，可以使一些边界变大，另一些边界变小，同时令图片适应边界的变化。这时候模型的正确建立就大大地简化了我们的编码效率。</p>
+<p>首先，我们找到我们是否触摸在线上，因为内部的线对象必然会被2个以上的边界引用，当这条线的信息改变时，对应的边界也会马上得知，并改变其边界区域，这样我们就可以很方便的重新画出边界，我们就只要更新受影响区域图片的<code>Matrix</code>即可。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line">moveLine(event); <span class="comment">//移动线</span></div><div class="line">mPuzzleLayout.update(); <span class="comment">//更新PuzzleLayout内Border信息</span></div><div class="line">updatePieceInBorder(event); <span class="comment">//更新图片Matrix信息以适应变化</span></div></pre></td></tr></table></figure>
+<h4 id="图片位置交换"><a href="#图片位置交换" class="headerlink" title="图片位置交换"></a>图片位置交换</h4><p>图片之间的相对位置是可以改变的，按照正常的逻辑也是当我们长按一张图片时，那张图片会悬浮，然后移动到要交换位置的图片，释放手指就交换成功了。那么问题就是这个悬浮起来的效果，这里用全图显示加个半透明来表示，利用<code>Canvas</code>的相关方法实现及其容易。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">if</span> (mHandlingPiece != <span class="keyword">null</span> &amp;&amp; mCurrentMode == Mode.SWAP) &#123;</div><div class="line">    mHandlingPiece.draw(canvas, mBitmapPaint, <span class="number">128</span>);</div><div class="line">    <span class="keyword">if</span> (mReplacePiece != <span class="keyword">null</span>) &#123;</div><div class="line">        drawSelectedBorder(canvas, mReplacePiece);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="图片翻转"><a href="#图片翻转" class="headerlink" title="图片翻转"></a>图片翻转</h4><p>这个同样利用<code>Matrix</code>可以轻松实现，不赘述。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line">matrix.postScale(-<span class="number">1</span>, <span class="number">1</span>, px, py); <span class="comment">//水平翻转</span></div><div class="line">matrix.postScale(<span class="number">1</span>, -<span class="number">1</span>, px, py); <span class="comment">//垂直翻转</span></div></pre></td></tr></table></figure>
+<h4 id="尾声"><a href="#尾声" class="headerlink" title="尾声"></a>尾声</h4><p>到这里，我们所要实现的功能已经基本全部实现，剩下的就是完善细节，应该提供怎么样的接口供外部操作，只需要慢慢调试即可，感兴趣的同学可以去看一下<a href="https://github.com/wuapnjie/PuzzleView" target="_blank" rel="external">源码</a>。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>这次自定义的View相对于上一次的<a href="https://github.com/wuapnjie/StickerView" target="_blank" rel="external">StickerView</a>来说，无疑是复杂了很多，我们需要建立更复杂的模型，但是所运用的核心类是一直的，<code>Canvas</code>和<code>Matrix</code>类，同上一篇一样，我还是要强调思考与建模的重要性，万事开头难，前期的思考无疑是最难的，也占据了整个项目大部分的时间(我花了两周思考，呜呜，可能我太笨了)。</p>
+<p>希望阅读完这篇文章后，可以对你有一些帮助，有什么问题或不懂可以随时联系我，欢迎骚扰。</p>
+<p>最近闲下来了，写点文章记录之前的学习并巩固我的基础知识，希望同大家一起进步！</p>
+
+	
+	
+	
+	
+</div>
+				
+				
+
+                <!-- Post Comments -->
+                
+                    
+    <!-- 使用多说评论 -->
+    <link rel="stylesheet" href="/css/duoshuo.min.css">
+<style>
+    #ds-thread #ds-reset .ds-post-button{
+        background-color: #0097A7 !important;
+    }
+    #ds-wrapper #ds-reset .ds-icons-32{
+        background-color: #0097A7 !important;
+    }
+    #ds-reset .ds-highlight {
+        color: #0097A7 !important;
+    }
+</style>
+<div id="comments">
+    <!-- 多说评论框 start -->
+        <div class="ds-thread" 
+            data-thread-key="2016/11/02/Android自定义View实战之PuzzleView/" 
+            data-url="http://wuapnjie.github.io/2016/11/02/Android自定义View实战之PuzzleView/"
+            data-title="Android自定义View实战之拼图PuzzleView"></div>
+    <!-- 多说评论框 end -->
+</div>
+
+
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    
+    <!-- Prev Nav -->
+    
+        <a href="/2016/11/05/Android自定义View实战之角度选择器/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2016/11/02/Android自定义View实战之StickerView/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+        </div>
+    </div>
+
+				
+				
+					<!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay "></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored  sidebar-fixed-left" role="navigation">
+	<div id="sidebar-main">
+	    <!-- Sidebar Header -->
+		<div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+    <i class="material-icons">clear_all</i>
+    <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.png" alt="Snowbean's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        wupanjie0611@email.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+		<!-- Sidebar Navigation  -->
+		<ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+			
+                <li>
+                    <a href="#" target="_blank" title="Email Me">
+						<i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    <li id="sidebar-first-li">
+        <a href="/" target="_self">
+            <i class="material-icons sidebar-material-icons">home</i>
+             主页
+        </a>
+    </li>
+
+    <!-- I'm Feeling Lucky -->
+<!--
+    <li class="dropdown">
+        <a href="" target="_self">
+            <i class="material-icons sidebar-material-icons">explore</i>
+             sidebar.imlucky
+        </a>
+    </li>
+-->
+
+	
+    <!-- Archives  -->
+    <li class="dropdown">
+        <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+            <i class="material-icons sidebar-material-icons">inbox</i>
+             归档
+            <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+            <li>
+            <a class="sidebar_archives-link" href="/archives/2017/01/">一月 2017<span class="sidebar_archives-count">8</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/12/">十二月 2016<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/11/">十一月 2016<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/09/">九月 2016<span class="sidebar_archives-count">6</span></a>
+        </ul>
+    </li>
+
+    <!-- Divider -->
+    <li class="divider"></li>
+
+
+    <!-- Pages  -->
+	
+
+    <!-- Article Numebr  -->
+    <li>
+        <a href="/archives">
+             文章总数
+             <span class="sidebar-badge">21</span>
+        </a>
+    </li>
+</ul>
+
+		<!-- Sidebar Divider -->
+		<div class="sidebar-divider"></div>
+
+		<!-- Sidebar Footer -->
+		<!-- 
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持。 :) 
+-->
+
+<!-- Theme Material -->
+<a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
+	<div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+		主题 - Material
+		<span class="sidebar-badge badge-circle">i</span>
+	</div>
+</a>
+
+<!-- Help & Support -->
+<!--
+<a href="mailto:hiviosey@gmail.com" class="sidebar-footer-text-a">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+		sidebar.help
+		<span class="mdl-button__ripple-container">
+			<span class="mdl-ripple"></span>
+		</span>
+	</div>
+</a>
+-->
+
+<!-- Feedback -->
+<!--
+<a href="https://github.com/viosey/hexo-theme-material/issues" target="_blank" class="sidebar-footer-text-a">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+         sidebar.feedback
+                    <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></div>
+</a>
+-->
+
+<!-- Abount Theme -->
+<!--
+<a href="https://blog.viosey.com/index.php/Material.html" target="_blank" class="sidebar-footer-text-a">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+         sidebar.about_theme
+        <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></div>
+</a>-->
+
+	</div>
+    
+    <!-- Sidebar Sponsor -->
+    
+
+
+</aside>
+
+				
+				
+				
+					<!-- Footer Top Button -->
+					<div class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+				
+				
+				<!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+	
+	
+		<!-- Paradox Footer Left Section -->
+		<div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+    <a href="https://twitter.com/twitter" target="view_window"><button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-twitter.png);">
+        <span class="visuallyhidden">Twitter</span>
+    </button></a>
+    
+    
+    <!-- Facebook -->
+    
+    <a href="https://www.facebook.com/facebook" target="view_window"><button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-facebook.png);">
+        <span class="visuallyhidden">Facebook</span>
+    </button></a>
+    
+    
+    <!-- Google + -->
+    
+    <a href="https://www.google.com/" target="view_window"><button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-gplus.png);">
+        <span class="visuallyhidden">Google Plus</span>
+    </button></a>
+    
+    
+    <!-- Weibo -->
+    
+    
+    
+    <!-- Instagram -->
+    
+    
+    
+    <!-- Tumblr -->
+    
+    
+    
+    <!-- Github -->
+    
+    <a href="https://github.com/wuapnjie" target="view_window"><button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-github.png);">
+        <span class="visuallyhidden">Github</span>
+    </button></a>
+    
+</div>
+
+
+		<!--Copyright-->
+		<div id="copyright">Copyright&nbsp;©&nbsp;<script type="text/javascript">var fd = new Date();document.write(fd.getFullYear());</script>&nbsp;Snowbean's Blog</div>
+
+		<!-- Paradox Footer Right Section -->
+
+		<!-- 
+		I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+		It will not impact the appearance and can give developers a lot of support :)
+
+		很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+		它不会影响美观并可以给开发者很大的支持。 :) 
+		-->
+
+		<div class="mdl-mini-footer--right-section">
+			<div>
+				<div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+				<div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+			</div>
+		</div>
+	
+    
+</footer>
+                
+				<!-- Import File -->
+<script src="/js/highlight.min.js"></script>
+<script src="/js/js.min.js"></script>
+<script src="/js/nprogress.js"></script>
+
+<script type="text/javascript">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    
+    $('#nprogress .bar').css({
+        'background': '#FF4081'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #FF4081, 0 0 15px #FF4081'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#FF4081',
+        'border-left-color': '#FF4081'
+    });
+    
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+    <!-- 多说公共 js 代码 start -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"wuapnjie"};
+        (function() {
+            var ds = document.createElement('script');
+            ds.type = 'text/javascript';ds.async = true;
+            ds.src = 'https://static.duoshuo.com/embed.js';
+            ds.charset = 'UTF-8';
+            (document.getElementsByTagName('head')[0] 
+             || document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+    </script>
+    <!-- 多说公共 js 代码 end -->
+
+
+
+
+<!-- Swiftye -->
+
+
+<!-- Local Search-->
+
+
+<!-- Window Load-->
+<script>
+    $(window).load(function() {
+        // Post_Toc parent position fixed
+        $(".post-toc-wrap").parent(".mdl-menu__container").css("position", "fixed");
+    });
+</script>
+
+<!-- MathJax Load-->
+
+            </main>
+        </div>
+		
+    </body>
+		
+	
+</html>

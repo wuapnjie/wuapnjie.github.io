@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <!-- Title -->
+    
+    <title>
+        Fresco日常配置及使用 | Snowbean&#39;s Blog
+    </title>
+    
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon" sizes="192x192" href="/img/favicon.png">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+    
+    <!-- Meta & INfo -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0097A7">
+    <meta name="author" content="Snowbean">
+    <meta name="description" content="Keep Calm and Carry on!">
+    <meta name="keywords" content="null">
+    
+    <!--iOS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-title" content="Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="480">
+    
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Snowbean&#39;s Blog">
+    
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://wuapnjie.github.io">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="Fresco日常配置及使用 | Snowbean&#39;s Blog">
+    <meta property="og:description" content="Keep Calm and Carry on!">
+    
+     <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+        
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+    
+    <!-- Import CSS -->
+    <link rel="stylesheet" href="/css/material.min.css">
+    <link rel="stylesheet" href="/css/style.min.css">
+    <!-- Config CSS -->
+
+
+<!-- Other Styles -->
+<style>
+	body, html{
+		font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+	}
+	
+    a{
+        color: #00838F
+    }
+    
+    .mdl-card__media,
+    #search-label,
+    #search-form-label:after,
+    #scheme-Paradox .hot_tags-count,
+    #scheme-Paradox .sidebar_archives-count,
+    #scheme-Paradox .sidebar-colored .sidebar-header,
+    #scheme-Paradox .sidebar-colored .sidebar-badge{
+        background-color: #0097A7 !important
+    }
+    
+	/* Sidebar User Drop Down Menu Text Color */
+	#scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+    #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus{
+        color: #0097A7 !important
+    }
+    
+    #post_entry-right-info,
+    .sidebar-colored .sidebar-nav li:hover > a,
+    .sidebar-colored .sidebar-nav li:hover > a i,
+    .sidebar-colored .sidebar-nav li > a:hover,
+    .sidebar-colored .sidebar-nav li > a:hover i,
+    .sidebar-colored .sidebar-nav li > a:focus i,
+    .sidebar-colored .sidebar-nav > .open > a,
+    .sidebar-colored .sidebar-nav > .open > a:hover,
+    .sidebar-colored .sidebar-nav > .open > a:focus,
+    #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a{
+        color: #0097A7 !important
+    }
+    
+    .toTop{
+        background: #757575 !important
+    }
+		
+	.material-layout .material-post>.material-nav,
+	.material-layout .material-index>.material-nav,
+	.material-nav a{
+		color: #757575;
+	}
+		
+	#scheme-Paradox .MD-burger-layer {
+		background-color: #757575;
+	}
+
+	#scheme-Paradox #post-toc-trigger-btn{
+		color: #757575;
+	}
+	
+	.post-toc a:hover{
+		color: #00838F;
+		text-decoration: underline;
+	}
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+        body{
+            background-color: #F5F5F5
+        }
+		
+		/* blog_info bottom background */
+        #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text{
+            background-color: #fff;
+        }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+        .fade {
+            transition: all 800ms linear;
+            -webkit-transform: translate3d(0,0,0);
+            -moz-transform: translate3d(0,0,0);
+            -ms-transform: translate3d(0,0,0);
+            -o-transform: translate3d(0,0,0);
+            transform: translate3d(0,0,0);
+            opacity: 1;
+        }
+
+        .fade.out{
+            opacity: 0;
+        }
+    </style>
+
+	<script src="/js/jquery.min.js"></script>
+	
+	<link rel="stylesheet" href="/css/highlight/solarized-white.css">
+	
+	<!-- UC Browser Compatible-->
+	<script>
+		var agent = navigator.userAgent.toLowerCase();
+		if(agent.indexOf('ucbrowser')>0) {
+			document.write('<link rel="stylesheet" href="/css/uc.css">');
+		   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+		}
+	</script>
+    
+    <!-- Custom Head -->
+    
+</head>
+	
+	
+
+    <body id="scheme-Paradox">
+
+		
+        <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+				
+			
+			
+            <!-- Main Container -->
+            <main class="material-layout__content" id="main">
+				
+                <!-- Top Anchor -->
+                <div id="top"></div>
+				
+				
+                <!-- Hamburger Button -->
+                <button class="MD-burger-icon sidebar-toggle">
+                    <span class="MD-burger-layer"></span>
+                </button>
+				
+				
+                <!-- Post TOC -->
+
+    
+	<!-- Back Button -->
+<!--
+	<div class="material-back" id="backhome-div" tabindex="0">
+		<a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" href="#" onclick="window.history.back();return false;" target="_self" role="button" data-upgraded=",MaterialButton,MaterialRipple">
+			<i class="material-icons" role="presentation">arrow_back</i>
+			<span class="mdl-button__ripple-container">
+				<span class="mdl-ripple"></span>
+			</span>
+		</a>
+	</div>			
+-->
+	<!-- Left aligned menu below button -->
+	<button id="post-toc-trigger-btn"
+			class="mdl-button mdl-js-button mdl-button--icon">
+	  <i class="material-icons">format_list_numbered</i>
+	</button>
+
+	<ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect"
+		for="post-toc-trigger-btn">
+			
+			
+		
+<!--			<li class="mdl-menu__item">Some Action</li>-->
+	</ul>
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+		
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+	<!-- Paradox Post Header -->
+	
+		
+			<!-- Random Thumbnail -->
+			<div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+				<script>
+    
+    var randomNum;
+    randomNum = Math.floor(Math.random() * 5 + 1);
+    
+    $(".post_thumbnail-random").css('background-image', 'url(' + '/img/random/' + randomNum + '.png' + ')');
+    
+</script>
+
+		
+	
+        <p class="article-headline-p">
+            Fresco日常配置及使用
+        </p>
+    </div>
+
+	
+
+				
+				
+					<!-- Paradox Post Info -->
+					<div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+    
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>Snowbean</strong>
+        <span>9月 08, 2016</span>
+    </div>
+    
+    <div class="section-spacer"></div>
+	
+    <!-- Favorite -->
+<!--
+    <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+        <i class="material-icons" role="presentation">favorite</i>
+        <span class="visuallyhidden">favorites</span>
+    </button>
+-->
+    
+    <!-- Tags (bookmark) -->
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/Android/">Android</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/Fresco/">Fresco</a>
+    </ul>
+    
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+    
+    
+    
+    
+    <!-- Share Twitter -->
+    <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Fresco日常配置及使用&url=http://wuapnjie.github.io//2016/09/08/Fresco日常配置及使用/index.html&via=Snowbean" target="_blank">
+        <li class="mdl-menu__item">
+            分享到 Twitter
+        </li>
+    </a>
+    
+    <!-- Share Google+ -->
+    <a class="post_share-link" href="https://plus.google.com/share?url=http://wuapnjie.github.io//2016/09/08/Fresco日常配置及使用/index.html" target="_blank">
+        <li class="mdl-menu__item">
+            分享到 Google+
+        </li>
+    </a>
+    
+    <!-- Share Weibo -->
+    <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Fresco日常配置及使用&url=http://wuapnjie.github.io//2016/09/08/Fresco日常配置及使用/index.html&pic=&searchPic=false&style=simple" target="_blank">
+        <li class="mdl-menu__item">
+            分享到微博
+        </li>
+    </a>
+</ul>
+</div>
+				
+
+                <!-- Post Content -->
+                <div id="post-content" class="markdown-Github mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+	
+		<p>Fresco是Facebook出品的一个超级强大的开源图片加载库，支持Gif，Webp格式的图片加载，支持渐进式显示，支持……总之支持很多东西,2333。</p>
+<p>###Fresco配置<br>Fresco的配置很重要，配置的不好就很容易造成性能上的问题</p>
+<p>在Application.java中配置<br>这里是我的配置，使用了OkHttp3作为网络请求库</p>
+<p><strong>gradle配置</strong><br><figure class="highlight gradle"><table><tr><td class="code"><pre><div class="line"><span class="keyword">compile</span> <span class="string">'com.facebook.fresco:fresco:0.11.0'</span></div><div class="line"><span class="keyword">compile</span> <span class="string">'com.facebook.fresco:imagepipeline-okhttp3:0.11.0'</span></div></pre></td></tr></table></figure></p>
+<p><strong>java代码配置</strong><br><figure class="highlight java"><table><tr><td class="code"><pre><div class="line">        <span class="comment">//这里是添加Fresco的日志</span></div><div class="line">Set&lt;RequestListener&gt; requestListeners = <span class="keyword">new</span> HashSet&lt;&gt;();</div><div class="line">requestListeners.add(<span class="keyword">new</span> RequestLoggingListener());</div><div class="line"></div><div class="line"><span class="comment">//当内存紧张时采取的措施</span></div><div class="line">MemoryTrimmableRegistry memoryTrimmableRegistry = NoOpMemoryTrimmableRegistry.getInstance();</div><div class="line">memoryTrimmableRegistry.registerMemoryTrimmable(trimType -&gt; &#123;</div><div class="line"><span class="keyword">final</span> <span class="keyword">double</span> suggestedTrimRatio = trimType.getSuggestedTrimRatio();</div><div class="line"></div><div class="line">Log.e(<span class="string">"Fresco"</span>, String.format(<span class="string">"onCreate suggestedTrimRatio : %d"</span>, suggestedTrimRatio));</div><div class="line"><span class="keyword">if</span> (MemoryTrimType.OnCloseToDalvikHeapLimit.getSuggestedTrimRatio() == suggestedTrimRatio</div><div class="line">        || MemoryTrimType.OnSystemLowMemoryWhileAppInBackground.getSuggestedTrimRatio() == suggestedTrimRatio</div><div class="line">        || MemoryTrimType.OnSystemLowMemoryWhileAppInForeground.getSuggestedTrimRatio() == suggestedTrimRatio</div><div class="line">        ) &#123;</div><div class="line">    <span class="comment">//清除内存缓存</span></div><div class="line">    Fresco.getImagePipeline().clearMemoryCaches();</div><div class="line"><span class="comment">//                Fresco.getImagePipeline().clearCaches();</span></div><div class="line">&#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line">        <span class="comment">//小图片的磁盘配置,用来储存用户头像之类的小图</span></div><div class="line">DiskCacheConfig diskSmallCacheConfig = DiskCacheConfig.newBuilder(<span class="keyword">this</span>)</div><div class="line">        .setBaseDirectoryPath(<span class="keyword">this</span>.getCacheDir())<span class="comment">//缓存图片基路径</span></div><div class="line">        .setBaseDirectoryName(getString(R.string.app_name))<span class="comment">//文件夹名</span></div><div class="line">        .setMaxCacheSize(<span class="number">20</span> * ByteConstants.MB)<span class="comment">//默认缓存的最大大小。</span></div><div class="line">        .setMaxCacheSizeOnLowDiskSpace(<span class="number">10</span> * ByteConstants.MB)<span class="comment">//缓存的最大大小,使用设备时低磁盘空间。</span></div><div class="line">        .setMaxCacheSizeOnVeryLowDiskSpace(<span class="number">5</span> * ByteConstants.MB)<span class="comment">//缓存的最大大小,当设备极低磁盘空间</span></div><div class="line">        .build();</div><div class="line"></div><div class="line">ImagePipelineConfig imagePipelineConfig = OkHttpImagePipelineConfigFactory</div><div class="line">        .newBuilder(<span class="keyword">this</span>, client)</div><div class="line">        .setDownsampleEnabled(<span class="keyword">true</span>)</div><div class="line">        .setResizeAndRotateEnabledForNetwork(<span class="keyword">true</span>)</div><div class="line">        .setRequestListeners(requestListeners)</div><div class="line">        .setBitmapMemoryCacheParamsSupplier(<span class="keyword">new</span> LolipopBitmapMemoryCacheSupplier((ActivityManager) getSystemService(ACTIVITY_SERVICE)))</div><div class="line">        .setMemoryTrimmableRegistry(memoryTrimmableRegistry)</div><div class="line">        .setSmallImageDiskCacheConfig(diskSmallCacheConfig)</div><div class="line">        .setBitmapsConfig(Bitmap.Config.RGB_565)</div><div class="line">        .build();</div><div class="line"></div><div class="line">Fresco.initialize(<span class="keyword">this</span>, imagePipelineConfig);</div></pre></td></tr></table></figure></p>
+<p>因为在Android5.0以上的机子不能肆意使用匿名内存区域，所以要特别区分一下<br><figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">import</span> android.app.ActivityManager;</div><div class="line"><span class="keyword">import</span> android.os.Build;</div><div class="line"></div><div class="line"><span class="keyword">import</span> com.facebook.common.internal.Supplier;</div><div class="line"><span class="keyword">import</span> com.facebook.common.util.ByteConstants;</div><div class="line"><span class="keyword">import</span> com.facebook.imagepipeline.cache.MemoryCacheParams;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * Created by snowbean on 16-7-2.</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LolipopBitmapMemoryCacheSupplier</span> <span class="keyword">implements</span> <span class="title">Supplier</span>&lt;<span class="title">MemoryCacheParams</span>&gt; </span>&#123;</div><div class="line">    <span class="keyword">private</span> ActivityManager activityManager;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">LolipopBitmapMemoryCacheSupplier</span><span class="params">(ActivityManager activityManager)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.activityManager = activityManager;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> MemoryCacheParams <span class="title">get</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.LOLLIPOP) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">new</span> MemoryCacheParams(getMaxCacheSize(), <span class="number">56</span>, Integer.MAX_VALUE,</div><div class="line">                    Integer.MAX_VALUE,</div><div class="line">                    Integer.MAX_VALUE);</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">new</span> MemoryCacheParams(</div><div class="line">                    getMaxCacheSize(),</div><div class="line">                    <span class="number">256</span>,</div><div class="line">                    Integer.MAX_VALUE,</div><div class="line">                    Integer.MAX_VALUE,</div><div class="line">                    Integer.MAX_VALUE);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">getMaxCacheSize</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">final</span> <span class="keyword">int</span> maxMemory = Math.min(activityManager.getMemoryClass() * ByteConstants.MB, Integer.MAX_VALUE);</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (maxMemory &lt; <span class="number">32</span> * ByteConstants.MB) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="number">4</span> * ByteConstants.MB;</div><div class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (maxMemory &lt; <span class="number">64</span> * ByteConstants.MB) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="number">6</span> * ByteConstants.MB;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">if</span> (Build.VERSION.SDK_INT &lt;= Build.VERSION_CODES.GINGERBREAD) &#123;</div><div class="line">                <span class="keyword">return</span> <span class="number">8</span> * ByteConstants.MB;</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                <span class="keyword">return</span> maxMemory / <span class="number">4</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>###Fresco图片加载<br>为了使用方便，将图片加载都使用静态方法作为工具类写在一起<br><figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">import</span> android.content.Context;</div><div class="line"><span class="keyword">import</span> android.net.Uri;</div><div class="line"><span class="keyword">import</span> android.text.TextUtils;</div><div class="line"><span class="keyword">import</span> android.util.Log;</div><div class="line"></div><div class="line"><span class="keyword">import</span> com.facebook.binaryresource.BinaryResource;</div><div class="line"><span class="keyword">import</span> com.facebook.binaryresource.FileBinaryResource;</div><div class="line"><span class="keyword">import</span> com.facebook.cache.common.CacheKey;</div><div class="line"><span class="keyword">import</span> com.facebook.drawee.backends.pipeline.Fresco;</div><div class="line"><span class="keyword">import</span> com.facebook.drawee.backends.pipeline.PipelineDraweeController;</div><div class="line"><span class="keyword">import</span> com.facebook.drawee.view.SimpleDraweeView;</div><div class="line"><span class="keyword">import</span> com.facebook.imagepipeline.common.Priority;</div><div class="line"><span class="keyword">import</span> com.facebook.imagepipeline.common.ResizeOptions;</div><div class="line"><span class="keyword">import</span> com.facebook.imagepipeline.core.ImagePipelineFactory;</div><div class="line"><span class="keyword">import</span> com.facebook.imagepipeline.request.ImageRequest;</div><div class="line"><span class="keyword">import</span> com.facebook.imagepipeline.request.ImageRequestBuilder;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.io.File;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * Created by snowbean on 16-7-2.</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PhotoUtil</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String TAG = PhotoUtil.class.getSimpleName();</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">PhotoUtil</span><span class="params">()</span> </span>&#123;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">//Fresco</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">display</span><span class="params">(SimpleDraweeView draweeView, String url)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (TextUtils.isEmpty(url)) &#123;</div><div class="line">            Log.e(TAG, <span class="string">"display: error the url is empty"</span>);</div><div class="line">            <span class="keyword">return</span>;</div><div class="line">        &#125;</div><div class="line">        draweeView.setImageURI(url);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">display</span><span class="params">(SimpleDraweeView draweeView, File file)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (file == <span class="keyword">null</span>) &#123;</div><div class="line">            Log.e(TAG, <span class="string">"display: error the file is empty"</span>);</div><div class="line">            <span class="keyword">return</span>;</div><div class="line">        &#125;</div><div class="line">        Uri uri = Uri.fromFile(file);</div><div class="line">        <span class="keyword">if</span> (uri == <span class="keyword">null</span>) <span class="keyword">return</span>;</div><div class="line">        draweeView.setImageURI(uri);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">display</span><span class="params">(SimpleDraweeView draweeView, Uri uri)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (uri == <span class="keyword">null</span>) &#123;</div><div class="line">            Log.e(TAG, <span class="string">"display: error the url is empty"</span>);</div><div class="line">            <span class="keyword">return</span>;</div><div class="line">        &#125;</div><div class="line">        draweeView.setImageURI(uri);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">display</span><span class="params">(SimpleDraweeView draweeView, Uri uri, <span class="keyword">int</span> width, <span class="keyword">int</span> height)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (uri == <span class="keyword">null</span>) &#123;</div><div class="line">            Log.e(TAG, <span class="string">"display: error the url is empty"</span>);</div><div class="line">            <span class="keyword">return</span>;</div><div class="line">        &#125;</div><div class="line">        ImageRequest request = ImageRequestBuilder.newBuilderWithSource(uri)</div><div class="line">                .setResizeOptions(<span class="keyword">new</span> ResizeOptions(width, height))</div><div class="line">                .setAutoRotateEnabled(<span class="keyword">true</span>)</div><div class="line">                .setLocalThumbnailPreviewsEnabled(<span class="keyword">true</span>)</div><div class="line">                .build();</div><div class="line"></div><div class="line">        PipelineDraweeController controller = (PipelineDraweeController) Fresco.newDraweeControllerBuilder()</div><div class="line">                .setOldController(draweeView.getController())</div><div class="line">                .setImageRequest(request)</div><div class="line">                .build();</div><div class="line"></div><div class="line">        draweeView.setController(controller);</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">display</span><span class="params">(SimpleDraweeView draweeView, String url, <span class="keyword">int</span> width, <span class="keyword">int</span> height)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (TextUtils.isEmpty(url)) &#123;</div><div class="line">            Log.e(TAG, <span class="string">"display: error the url is empty"</span>);</div><div class="line">            <span class="keyword">return</span>;</div><div class="line">        &#125;</div><div class="line">        Uri uri = Uri.parse(url);</div><div class="line">        display(draweeView, uri, width, height);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">display</span><span class="params">(SimpleDraweeView draweeView, Uri uri, <span class="keyword">boolean</span> isSmall)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (uri == <span class="keyword">null</span>) &#123;</div><div class="line">            Log.e(TAG, <span class="string">"display: error the url is empty"</span>);</div><div class="line">            <span class="keyword">return</span>;</div><div class="line">        &#125;</div><div class="line">        ImageRequest request;</div><div class="line">        <span class="keyword">if</span> (isSmall) &#123;</div><div class="line">            request = ImageRequestBuilder.newBuilderWithSource(uri)</div><div class="line">                    .setAutoRotateEnabled(<span class="keyword">true</span>)</div><div class="line">                    .setImageType(ImageRequest.ImageType.SMALL)</div><div class="line">                    .setLocalThumbnailPreviewsEnabled(<span class="keyword">true</span>)</div><div class="line">                    .build();</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            request = ImageRequestBuilder.newBuilderWithSource(uri)</div><div class="line">                    .setAutoRotateEnabled(<span class="keyword">true</span>)</div><div class="line">                    .setImageType(ImageRequest.ImageType.DEFAULT)</div><div class="line">                    .setLocalThumbnailPreviewsEnabled(<span class="keyword">true</span>)</div><div class="line">                    .build();</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        PipelineDraweeController controller = (PipelineDraweeController) Fresco.newDraweeControllerBuilder()</div><div class="line">                .setOldController(draweeView.getController())</div><div class="line">                .setImageRequest(request)</div><div class="line">                .build();</div><div class="line"></div><div class="line">        draweeView.setController(controller);</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">display</span><span class="params">(SimpleDraweeView draweeView, String url, <span class="keyword">boolean</span> isSmall)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (TextUtils.isEmpty(url)) &#123;</div><div class="line">            Log.e(TAG, <span class="string">"display: error the url is empty"</span>);</div><div class="line">            <span class="keyword">return</span>;</div><div class="line">        &#125;</div><div class="line">        Uri uri = Uri.parse(url);</div><div class="line">        display(draweeView, uri, isSmall);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">prefetchPhoto</span><span class="params">(Context context, Uri uri, <span class="keyword">int</span> width, <span class="keyword">int</span> height)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (uri == <span class="keyword">null</span>) &#123;</div><div class="line">            Log.e(TAG, <span class="string">"display: error the url is empty"</span>);</div><div class="line">            <span class="keyword">return</span>;</div><div class="line">        &#125;</div><div class="line">        ImageRequest request = ImageRequestBuilder.newBuilderWithSource(uri)</div><div class="line">                .setResizeOptions(<span class="keyword">new</span> ResizeOptions(width, height))</div><div class="line">                .setAutoRotateEnabled(<span class="keyword">true</span>)</div><div class="line">                .setRequestPriority(Priority.LOW)</div><div class="line">                .setLocalThumbnailPreviewsEnabled(<span class="keyword">true</span>)</div><div class="line">                .build();</div><div class="line"></div><div class="line">        Fresco.getImagePipeline().prefetchToDiskCache(request, context);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">prefetchPhoto</span><span class="params">(Context context, String url, <span class="keyword">int</span> width, <span class="keyword">int</span> height)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (TextUtils.isEmpty(url)) &#123;</div><div class="line">            Log.e(TAG, <span class="string">"display: error the url is empty"</span>);</div><div class="line">            <span class="keyword">return</span>;</div><div class="line">        &#125;</div><div class="line">        Uri uri = Uri.parse(url);</div><div class="line">        prefetchPhoto(context, uri, width, height);</div><div class="line">    &#125;</div><div class="line"></div><div class="line"><span class="comment">//从磁盘缓存中获取图片文件，需要重命名成jpg文件并移动到相应储存位置</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> File <span class="title">obtainCachedPhotoFile</span><span class="params">(CacheKey cacheKey)</span> </span>&#123;</div><div class="line">        File localFile = <span class="keyword">null</span>;</div><div class="line">        <span class="keyword">if</span> (cacheKey != <span class="keyword">null</span>) &#123;</div><div class="line">            <span class="keyword">if</span> (ImagePipelineFactory.getInstance().getMainFileCache().hasKey(cacheKey)) &#123;</div><div class="line">                BinaryResource binaryResource = ImagePipelineFactory.getInstance().getMainFileCache().getResource(cacheKey);</div><div class="line"></div><div class="line">                localFile = ((FileBinaryResource) binaryResource).getFile();</div><div class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (ImagePipelineFactory.getInstance().getSmallImageFileCache().hasKey(cacheKey)) &#123;</div><div class="line">                BinaryResource binaryResource = ImagePipelineFactory.getInstance().getSmallImageFileCache().getResource(cacheKey);</div><div class="line"></div><div class="line">                localFile = ((FileBinaryResource) binaryResource).getFile();</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">return</span> localFile;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>###获取Fresco磁盘缓存中的图片<br><figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> File <span class="title">obtainCachedPhotoFile</span><span class="params">(CacheKey cacheKey)</span> </span>&#123;</div><div class="line">    File localFile = <span class="keyword">null</span>;</div><div class="line">    <span class="keyword">if</span> (cacheKey != <span class="keyword">null</span>) &#123;</div><div class="line">        <span class="keyword">if</span> (ImagePipelineFactory.getInstance().getMainFileCache().hasKey(cacheKey)) &#123;</div><div class="line">            BinaryResource binaryResource = ImagePipelineFactory.getInstance().getMainFileCache().getResource(cacheKey);</div><div class="line"></div><div class="line">            localFile = ((FileBinaryResource) binaryResource).getFile();</div><div class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (ImagePipelineFactory.getInstance().getSmallImageFileCache().hasKey(cacheKey)) &#123;</div><div class="line">            BinaryResource binaryResource = ImagePipelineFactory.getInstance().getSmallImageFileCache().getResource(cacheKey);</div><div class="line">            localFile = ((FileBinaryResource) binaryResource).getFile();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> localFile;</div><div class="line"> &#125;</div></pre></td></tr></table></figure></p>
+<p>###Fresco暂停与继续加载图片<br><figure class="highlight java"><table><tr><td class="code"><pre><div class="line">Fresco.getImagePipeline().resume();</div><div class="line">Fresco.getImagePipeline().pause();</div></pre></td></tr></table></figure></p>
+
+	
+	
+	
+	
+</div>
+				
+				
+
+                <!-- Post Comments -->
+                
+                    
+    <!-- 使用多说评论 -->
+    <link rel="stylesheet" href="/css/duoshuo.min.css">
+<style>
+    #ds-thread #ds-reset .ds-post-button{
+        background-color: #0097A7 !important;
+    }
+    #ds-wrapper #ds-reset .ds-icons-32{
+        background-color: #0097A7 !important;
+    }
+    #ds-reset .ds-highlight {
+        color: #0097A7 !important;
+    }
+</style>
+<div id="comments">
+    <!-- 多说评论框 start -->
+        <div class="ds-thread" 
+            data-thread-key="2016/09/08/Fresco日常配置及使用/" 
+            data-url="http://wuapnjie.github.io/2016/09/08/Fresco日常配置及使用/"
+            data-title="Fresco日常配置及使用"></div>
+    <!-- 多说评论框 end -->
+</div>
+
+
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    
+    <!-- Prev Nav -->
+    
+        <a href="/2016/11/02/Android自定义View实战之StickerView/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2016/09/08/Android Camera2学习笔记/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+        </div>
+    </div>
+
+				
+				
+					<!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay "></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored  sidebar-fixed-left" role="navigation">
+	<div id="sidebar-main">
+	    <!-- Sidebar Header -->
+		<div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+    <i class="material-icons">clear_all</i>
+    <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.png" alt="Snowbean's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        wupanjie0611@email.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+		<!-- Sidebar Navigation  -->
+		<ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+			
+                <li>
+                    <a href="#" target="_blank" title="Email Me">
+						<i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    <li id="sidebar-first-li">
+        <a href="/" target="_self">
+            <i class="material-icons sidebar-material-icons">home</i>
+             主页
+        </a>
+    </li>
+
+    <!-- I'm Feeling Lucky -->
+<!--
+    <li class="dropdown">
+        <a href="" target="_self">
+            <i class="material-icons sidebar-material-icons">explore</i>
+             sidebar.imlucky
+        </a>
+    </li>
+-->
+
+	
+    <!-- Archives  -->
+    <li class="dropdown">
+        <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+            <i class="material-icons sidebar-material-icons">inbox</i>
+             归档
+            <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+            <li>
+            <a class="sidebar_archives-link" href="/archives/2017/01/">一月 2017<span class="sidebar_archives-count">8</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/12/">十二月 2016<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/11/">十一月 2016<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/09/">九月 2016<span class="sidebar_archives-count">6</span></a>
+        </ul>
+    </li>
+
+    <!-- Divider -->
+    <li class="divider"></li>
+
+
+    <!-- Pages  -->
+	
+
+    <!-- Article Numebr  -->
+    <li>
+        <a href="/archives">
+             文章总数
+             <span class="sidebar-badge">21</span>
+        </a>
+    </li>
+</ul>
+
+		<!-- Sidebar Divider -->
+		<div class="sidebar-divider"></div>
+
+		<!-- Sidebar Footer -->
+		<!-- 
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持。 :) 
+-->
+
+<!-- Theme Material -->
+<a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
+	<div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+		主题 - Material
+		<span class="sidebar-badge badge-circle">i</span>
+	</div>
+</a>
+
+<!-- Help & Support -->
+<!--
+<a href="mailto:hiviosey@gmail.com" class="sidebar-footer-text-a">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+		sidebar.help
+		<span class="mdl-button__ripple-container">
+			<span class="mdl-ripple"></span>
+		</span>
+	</div>
+</a>
+-->
+
+<!-- Feedback -->
+<!--
+<a href="https://github.com/viosey/hexo-theme-material/issues" target="_blank" class="sidebar-footer-text-a">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+         sidebar.feedback
+                    <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></div>
+</a>
+-->
+
+<!-- Abount Theme -->
+<!--
+<a href="https://blog.viosey.com/index.php/Material.html" target="_blank" class="sidebar-footer-text-a">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+         sidebar.about_theme
+        <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></div>
+</a>-->
+
+	</div>
+    
+    <!-- Sidebar Sponsor -->
+    
+
+
+</aside>
+
+				
+				
+				
+					<!-- Footer Top Button -->
+					<div class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+				
+				
+				<!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+	
+	
+		<!-- Paradox Footer Left Section -->
+		<div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+    <a href="https://twitter.com/twitter" target="view_window"><button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-twitter.png);">
+        <span class="visuallyhidden">Twitter</span>
+    </button></a>
+    
+    
+    <!-- Facebook -->
+    
+    <a href="https://www.facebook.com/facebook" target="view_window"><button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-facebook.png);">
+        <span class="visuallyhidden">Facebook</span>
+    </button></a>
+    
+    
+    <!-- Google + -->
+    
+    <a href="https://www.google.com/" target="view_window"><button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-gplus.png);">
+        <span class="visuallyhidden">Google Plus</span>
+    </button></a>
+    
+    
+    <!-- Weibo -->
+    
+    
+    
+    <!-- Instagram -->
+    
+    
+    
+    <!-- Tumblr -->
+    
+    
+    
+    <!-- Github -->
+    
+    <a href="https://github.com/wuapnjie" target="view_window"><button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-github.png);">
+        <span class="visuallyhidden">Github</span>
+    </button></a>
+    
+</div>
+
+
+		<!--Copyright-->
+		<div id="copyright">Copyright&nbsp;©&nbsp;<script type="text/javascript">var fd = new Date();document.write(fd.getFullYear());</script>&nbsp;Snowbean's Blog</div>
+
+		<!-- Paradox Footer Right Section -->
+
+		<!-- 
+		I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+		It will not impact the appearance and can give developers a lot of support :)
+
+		很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+		它不会影响美观并可以给开发者很大的支持。 :) 
+		-->
+
+		<div class="mdl-mini-footer--right-section">
+			<div>
+				<div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+				<div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+			</div>
+		</div>
+	
+    
+</footer>
+                
+				<!-- Import File -->
+<script src="/js/highlight.min.js"></script>
+<script src="/js/js.min.js"></script>
+<script src="/js/nprogress.js"></script>
+
+<script type="text/javascript">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    
+    $('#nprogress .bar').css({
+        'background': '#FF4081'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #FF4081, 0 0 15px #FF4081'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#FF4081',
+        'border-left-color': '#FF4081'
+    });
+    
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+    <!-- 多说公共 js 代码 start -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"wuapnjie"};
+        (function() {
+            var ds = document.createElement('script');
+            ds.type = 'text/javascript';ds.async = true;
+            ds.src = 'https://static.duoshuo.com/embed.js';
+            ds.charset = 'UTF-8';
+            (document.getElementsByTagName('head')[0] 
+             || document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+    </script>
+    <!-- 多说公共 js 代码 end -->
+
+
+
+
+<!-- Swiftye -->
+
+
+<!-- Local Search-->
+
+
+<!-- Window Load-->
+<script>
+    $(window).load(function() {
+        // Post_Toc parent position fixed
+        $(".post-toc-wrap").parent(".mdl-menu__container").css("position", "fixed");
+    });
+</script>
+
+<!-- MathJax Load-->
+
+            </main>
+        </div>
+		
+    </body>
+		
+	
+</html>
